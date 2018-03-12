@@ -9,6 +9,7 @@ exports.up = function(knex, Promise) {
     table.string('agency_name');
     table.integer('phone_number');
     table.string('email');
+    table.string('pw');
     table.timestamps(true, true);
   })
 

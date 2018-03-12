@@ -12,7 +12,8 @@ exports.seed = function(knex, Promise) {
           number_of_children: 3,
           agency_name: 'example agency',
           phone_number: 1234567890,
-          email: 'joekorsan@gmail.com'
+          email: 'joekorsan@gmail.com',
+          pw: '123456'
         }
       ]);
     });
