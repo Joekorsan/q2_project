@@ -28,7 +28,7 @@ module.exports = {
           return;
         })
       }else{
-        res.redirect('login');
+        res.redirect('/volunteer/login');
       }
 
     })
