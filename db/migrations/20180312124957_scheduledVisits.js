@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
       .onDelete('CASCADE')
       .index();
     table.string("parent_name");
-    table.int("number_of_children");
+    table.integer("number_of_children");
     table.date('appt_date');
     table.timestamps(true, true);
   })
