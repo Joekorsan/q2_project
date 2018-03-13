@@ -18,12 +18,23 @@ module.exports = {
   },
 
   validate:(req,res)=>{
+    knex('volunteers').where('username', req.body.username)
+    .then((volunteers)=>{
+      console.log('vol: ', volunteers);
+      if(volunteers[0]){
+        req.session.volunteer = volunteers[0];
+        req.session.save(()=>{
+          res.redirect('/volunteer/homepage');
+          return;
+        })
+      }else{
+        res.redirect('login');
+      }
 
-  }
+    })
 
 
-
-
+}//end of validate
 
 
 
