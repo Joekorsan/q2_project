@@ -9,7 +9,14 @@ module.exports = {
 
   //get volunteer homepage
   homepage: (req, res) => {
-    res.render('volunteer_homepage')
+    knex('schedule')
+    .innerJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
+    .then((schedules)=>{
+
+      res.render('volunteer_homepage', {schedules})
+
+    })
+
   },
 
   //get volunteer pa inout
@@ -31,11 +38,14 @@ module.exports = {
         res.redirect('/volunteer/login');
       }
 
-    })
+    })//end of .then()
 
+},//end of validate
 
-}//end of validate
-
+logout:(req,res)=>{
+  req.session.destroy();
+  res.redirect('/volunteer/login');
+}
 
 
 } // end of module exports

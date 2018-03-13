@@ -14,7 +14,7 @@ module.exports = function(app) {
   app.get('/pa/signup', pa.signup);
 
   // get volunteer login and post
-  app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
+  app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate); app.get('/volunteer/logout', v.logout);
 
   //get admin Login // post admin login
   app.get('/admin', admin.login); app.post('/admin', admin.loginPost);
@@ -33,6 +33,8 @@ module.exports = function(app) {
 
   // get volunteer pa input
   app.get('/volunteer/pa', v.pa)
+
+
 
   //get admin homepage
   app.get('/admin/homepage', admin.homepage)
@@ -62,7 +64,7 @@ const validatePath = (req, res, next)=>{
     } else {
       res.redirect('/admin')
     }
-  } else if (volunteer == '/volunteer/homepage') {
+  } else if (volunteer == '/volunteer/homepage' || req.session.volunteer) {
     console.log("I AM COMING FROM VOLUNTEER SITE")
     if (req.session.volunteer) {
       next();

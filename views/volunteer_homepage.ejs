@@ -2,9 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Volunteer Home page</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
   </head>
   <body>
-    VOLUNTEER HOMEPAGE!
+    <div>
+      <h2 class="inner">VOLUNTEER HOMEPAGE!</h2>
+    </div>
+
+
+    <hr>
+
+    <h2>List of schedules</h2>
+
+    <a href="#"><button type="button">Invite</button></a>
+
+    <% schedules.map((schedule)=>{ %>
+      <div>
+        <b><p>Parent Name: <%= schedule.parent_name %></p></b>
+        <p>Number of Childern: <%= schedule.number_of_children %></p>
+        <p>Appointmen Date: <%= schedule.appt_date %></p>
+        <p>PA Name: <%= schedule.first_name %> <%=schedule.last_name %> <%= schedule.middle_initial %></p>
+        <p>Angecy Name: <%= schedule.agency_name %></p>
+      </div>
+      <br><br>
+      <% }) %>
+
+      <a href="/volunteer/logout"><button type="button">Logout</button></a>  
   </body>
 </html>
