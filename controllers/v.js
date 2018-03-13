@@ -15,7 +15,12 @@ module.exports = {
   //get volunteer pa inout
   pa: (req, res) => {
     res.render('volunteer_input_pa')
+  },
+
+  validate:(req,res)=>{
+
   }
+
 
 
 

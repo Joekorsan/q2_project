@@ -2,7 +2,9 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require('body-parser');
+const logger = require('morgan');
 const port = process.env.PORT || 8000;
+app.use(logger('dev'));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 

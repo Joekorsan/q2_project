@@ -13,8 +13,8 @@ module.exports = function(app) {
   //get pa sign up
   app.get('/pa/signup', pa.signup);
 
-  // get volunteer login
-  app.get('/volunteer', v.login);
+  // get volunteer login and post
+  app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
 
   //get admin Login
   app.get('/admin', admin.login);
