@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get('/', pa.login);
 
   //get pa sign up
-  app.get('/pa/signup', pa.signup);
+  app.get('/pa/login',pa.login); app.post('/pa/login', pa.validate); app.get('/pa/signup', pa.signup); app.post('/pa/signup',pa.postSignup); app.get('/pa/logout' , pa.logout);
 
   // get volunteer login and post
   app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
@@ -27,6 +27,8 @@ module.exports = function(app) {
 
 //////MIDDLEWARE
   app.use(validatePath);
+
+  app.get('/pa/schedule',pa.schedule); app.post('/pa/schedule', pa.postSchedule)
 
   // get volunteer homepage
   app.get('/volunteer/homepage', v.homepage)
@@ -69,9 +71,12 @@ const validatePath = (req, res, next)=>{
     } else {
       res.redirect('/volunteer/login');
     }
-  } else if (pa == '/pa/homepage'){
-    console.log("I AM COMING FROM PA SITE")
-    res.redirect('/')
+  } else if (pa == '/pa/schedule' ){
+    if (req.session.pa) {
+      next();
+    } else {
+      res.redirect('/pa/login');
+    }
   } else if (kiosk == '/kiosk/pa'){
     console.log("I AM COMING FROM KIOSK P.A. SITE")
   } else if (kiosk == '/kiosk/parent'){
