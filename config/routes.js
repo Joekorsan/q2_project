@@ -16,8 +16,8 @@ module.exports = function(app) {
   // get volunteer login and post
   app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
 
-  //get admin Login
-  app.get('/admin', admin.login);
+  //get admin Login // post admin login
+  app.get('/admin', admin.login); app.post('/admin', admin.loginPost);
 
   //get kiosk checkin
   app.get('/kiosk', kiosk.checkin);

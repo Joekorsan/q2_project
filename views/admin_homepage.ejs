@@ -8,26 +8,27 @@
     <h2>LIST OF SCHEDULE TIMES</h2>
     <% for(let i=0; i<schedule.length;i++){ %>
       <p>App Date: <%= schedule[i].appt_date %><BR>
-        Parents Aid Id: <%= schedule[i].parent_aids_id %><BR>
+        Parent Aid: <%= schedule[i].first_name %> <%= schedule[i].last_name %><BR>
           Created at: <%= schedule[i].created_at %><BR>
           Updated at: <%= schedule[i].updated_at %><BR>
           </p>
-        <% } %><BR><BR>
+        <BR><BR>
 
 
         <h2>LIST OF APPROVED PARENT/CASE AIDS</h2>
-        <% for(let i=0; i<parentAids.length;i++){ %>
         <p>
-          Name: <%= parentAids[i].first_name %> <%= parentAids[i].middle_initial %> <%= parentAids[i].last_name %><BR>
-              Agency: <%= parentAids[i].agency %><BR>
-                Phone Number: <%= parentAids[i].phone_number %><BR>
-                  Email: <%= parentAids[i].email %><BR>
-                    Password: <%= parentAids[i].password %><BR>
-                      Created at: <%= parentAids[i].created_at %><BR>
-                        Updated at: <%= parentAids[i].updated_at %><BR>
+          Name: <%= schedule[i].first_name %> <%= schedule[i].middle_initial %> <%= schedule[i].last_name %><BR>
+              Agency: <%= schedule[i].agency_name %><BR>
+                Phone Number: <%= schedule[i].phone_number %><BR>
+                  Email: <%= schedule[i].email %><BR>
+                    Password: <%= schedule[i].pw %><BR>
+                      Created at: <%= schedule[i].created_at %><BR>
+                        Updated at: <%= schedule[i].updated_at %><BR>
 
         </p>
-        <% } %><BR><BR>
+        <BR><BR>
+
+          <% } %>
 
           <h2>CURRENT VOLUNTEER LOGIN INFORMATION</h2>
           <% for(let i=0; i<volunteer.length;i++){ %>
