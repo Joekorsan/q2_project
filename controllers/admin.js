@@ -24,6 +24,7 @@ module.exports = {
 
     if(admin.pw === req.body.pw){
       req.session.admin = admin;
+      console.log(req.session.admin)
       req.session.save(()=>{
         res.redirect('/admin/homepage')
       })
