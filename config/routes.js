@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get('/', pa.login);
 
   //get pa sign up
-  app.get('/pa/signup', pa.signup);
+  app.get('/pa/signup', pa.signup); app.post('/pa/login',pa.validate)
 
   // get volunteer login and post
   app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
@@ -60,19 +60,24 @@ const validatePath = (req, res, next)=>{
 
   if(admin == '/admin/homepage'){
     console.log("I AM COMING FROM ADMIN SITE")
-  }else if(volunteer == '/volunteer/homepage'){
+    if (req.session.admin){
+      next();
+    } else {
+      res.redirect('/admin')
+    }
+  } else if (volunteer == '/volunteer/homepage') {
     console.log("I AM COMING FROM VOLUNTEER SITE")
     if (req.session.volunteer) {
       next();
-    }else{
+    } else {
       res.redirect('/volunteer/login');
     }
-  }else if(pa == '/pa/homepage'){
+  } else if (pa == '/pa/homepage'){
     console.log("I AM COMING FROM PA SITE")
     res.redirect('/')
-  }else if(kiosk == '/kiosk/pa'){
+  } else if (kiosk == '/kiosk/pa'){
     console.log("I AM COMING FROM KIOSK P.A. SITE")
-  }else if(kiosk == '/kiosk/parent'){
+  } else if (kiosk == '/kiosk/parent'){
     console.log('I AM COMING FROM KIOSK PARENT SITE ')
     next();
   }
