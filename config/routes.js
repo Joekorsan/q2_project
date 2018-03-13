@@ -16,6 +16,8 @@ module.exports = function(app) {
   // get volunteer login and post
   app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
 
+
+
   //get admin Login
   app.get('/admin', admin.login);
 
@@ -26,7 +28,7 @@ module.exports = function(app) {
 
 
 //////MIDDLEWARE
-
+  app.use(validatePath);
 
   //get pa homepage
   app.get('/pa/homepage', pa.homepage)
@@ -45,4 +47,36 @@ module.exports = function(app) {
 
   //get kiosk for parent
   app.get('/kiosk/parent', kiosk.parent)
+}
+
+
+
+
+const validatePath = (req, res, next)=>{
+  console.log('Path::::: ',req.path);
+
+  let pa = req.path;
+  let volunteer = req.path;
+  let admin = req.path;
+  let kiosk = req.path;
+
+  if(admin == '/admin/homepage'){
+    console.log("I AM COMING FROM ADMIN SITE")
+  }else if(volunteer == '/volunteer/homepage'){
+    console.log("I AM COMING FROM VOLUNTEER SITE")
+    if (req.session.volunteer) {
+      next();
+    }else{
+      res.redirect('/volunteer/login');
+    }
+  }else if(pa == '/pa/homepage'){
+    console.log("I AM COMING FROM PA SITE")
+    res.redirect('/')
+  }else if(kiosk == '/kiosk/pa'){
+    console.log("I AM COMING FROM KIOSK P.A. SITE")
+  }else if(kiosk == '/kiosk/parent'){
+    console.log('I AM COMING FROM KIOSK PARENT SITE ')
+    next();
+  }
+
 }
