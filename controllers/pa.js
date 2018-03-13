@@ -11,14 +11,10 @@ module.exports = {
     res.render('pa_signup')
   },
 
-
   schedule: (req,res) => {
     res.render('pa_schedule');
   },
 
-  validate: (req, res) =>{
-    knex("")
-  }
 
 
 } // end of module exports

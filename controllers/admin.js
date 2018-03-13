@@ -38,7 +38,7 @@ module.exports = {
     knex('schedule')
     .fullOuterJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
     .then((results)=>{
-        knex('volunteer')
+        knex('volunteers')
         .then((info)=>{
           res.render('admin_homepage', {schedule:results, volunteer:info})
         })

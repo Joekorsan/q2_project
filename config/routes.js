@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get('/', pa.login);
 
   //get pa sign up
-  app.get('/pa/signup', pa.signup); app.post('/pa/login',pa.validate)
+  app.get('/pa/signup', pa.signup);
 
   // get volunteer login and post
   app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate)
@@ -27,9 +27,6 @@ module.exports = function(app) {
 
 //////MIDDLEWARE
   app.use(validatePath);
-
-  //get pa homepage
-  app.get('/pa/homepage', pa.homepage)
 
   // get volunteer homepage
   app.get('/volunteer/homepage', v.homepage)
