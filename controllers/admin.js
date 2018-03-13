@@ -9,7 +9,16 @@ module.exports = {
 
   //get admin homepage
   homepage: (req, res) => {
-    res.render('admin_homepage')
+    knex('schedule')
+    .then((results)=>{
+      knex('parent_aids')
+      .then((data)=>{
+        knex('volunteer')
+        .then((info)=>{
+          res.render('admin_homepage', {schedule:results, parentAids:data, volunteer:info})
+        })
+      })
+    })
   }
 
 
