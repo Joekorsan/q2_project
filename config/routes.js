@@ -37,6 +37,12 @@ module.exports = function(app) {
   //get admin homepage
   app.get('/admin/homepage', admin.homepage)
 
+  //get admin edit scheduled visit PAGE
+  app.get('/admin/homepage/edit/visit/:id', admin.editVisitPage)
+
+  //update scheduled visits
+  app.post('/admin/homepage/edit/visit/:id', admin.update)
+
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)
 
@@ -55,7 +61,7 @@ const validatePath = (req, res, next)=>{
   let admin = req.path;
   let kiosk = req.path;
 
-  if(admin == '/admin/homepage'){
+  if(admin == '/admin/homepage' || req.session.admin){
     console.log("I AM COMING FROM ADMIN SITE")
     if (req.session.admin){
       next();
