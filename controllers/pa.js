@@ -15,9 +15,8 @@ module.exports = {
   schedule: (req,res) => {
     res.render('pa_schedule');
   },
-
   validate: (req, res) =>{
-    knex("")
+    res.render("");
   }
 
 

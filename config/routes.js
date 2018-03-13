@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.use(validatePath);
 
   //get pa homepage
-  app.get('/pa/homepage', pa.homepage)
+  app.get('/pa/login', pa.login)
 
   // get volunteer homepage
   app.get('/volunteer/homepage', v.homepage)
