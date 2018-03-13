@@ -17,7 +17,7 @@ module.exports = {
   },
 
   validate: (req, res) =>{
-    
+    knex("")
   }
 
 
