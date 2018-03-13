@@ -9,7 +9,6 @@ exports.seed = function(knex, Promise) {
           first_name: 'Joe',
           last_name: 'Sando',
           middle_initial: 'R',
-          number_of_children: 3,
           agency_name: 'example agency',
           phone_number: 1234567890,
           email: 'joekorsan@gmail.com',
