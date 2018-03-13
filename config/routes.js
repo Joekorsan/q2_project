@@ -5,8 +5,6 @@ const kiosk = require('../controllers/kiosk.js')
 
 
 module.exports = function(app) {
-<<<<<<< HEAD
-=======
 
 
   // get pa login page
@@ -47,5 +45,4 @@ module.exports = function(app) {
 
   //get kiosk for parent
   app.get('/kiosk/parent', kiosk.parent)
->>>>>>> 11f4ad3074ac25c3e8d9999a4901b1b2f4c3bfbd
 }
