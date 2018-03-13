@@ -1,12 +1,13 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('employees').del()
+  return knex('volunteers').del()
     .then(function () {
       // Inserts seed entries
-      return knex('employees').insert([
+      return knex('volunteers').insert([
         {
-          name: 'Tessa',
+          first_name: 'Tessa',
+          last_name: 'Gonzales',
           email: 'tessaleego@gmail.com',
           pw: '123456'
         },
