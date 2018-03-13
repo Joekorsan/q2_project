@@ -6,17 +6,19 @@ module.exports = {
   login: (req, res) => {
     res.render('pa_login')
   },
-
-  // get pa homepage
-  homepage: (req, res) => {
-    res.render('pa_homepage')
-  },
-
   //get pa signup
   signup: (req, res) => {
     res.render('pa_signup')
   },
 
+
+  schedule: (req,res) => {
+    res.render('pa_schedule');
+  },
+
+  validate: (req, res) =>{
+    
+  }
 
 
 } // end of module exports

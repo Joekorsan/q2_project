@@ -4,8 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('first_name');
     table.string('last_name');
-    table.string('middle_initial')
-    table.integer('number_of_children');
+    table.string('middle_initial');
     table.string('agency_name');
     table.integer('phone_number');
     table.string('email');
