@@ -53,14 +53,35 @@ module.exports = function(app) {
   // app.get('/login/volunteer', login.volunteer)
 
   //get admin homepage
-
   app.get('/admin/auth/homepage', admin.homepage)
 
   //get admin edit scheduled visit PAGE
   app.get('/admin/auth/homepage/edit/visit/:id', admin.editVisitPage)
 
+
   //update scheduled visits
-  app.post('/admin/auth/homepage/edit/visit/:id', admin.update)
+  app.post('/admin/auth/homepage/edit/visit/:id', admin.updateVisit)
+
+
+  //remove a visit
+  app.get('/admin/auth/homepage/remove/visit/:id', admin.removeVisit)
+
+  //get admin edit pa
+  app.get('/admin/auth/homepage/edit/pa/:id', admin.editPaPage)
+
+
+  //update admin edit Pa
+  app.post('/admin/auth/homepage/edit/pa/:id', admin.updatePA)
+
+  //remove pa
+  app.get('/admin/auth/homepage/remove/pa/:id', admin.removePa);
+
+  // get admin edit volunteer page
+  app.get('/admin/auth/homepage/edit/vol/:id', admin.editVolPage)
+
+  //update admin edit volunteer
+  app.post('/admin/auth/homepage/edit/vol/:id', admin.updateVol)
+
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)
