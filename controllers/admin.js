@@ -35,6 +35,10 @@ module.exports = {
 
   //get admin homepage
   homepage: (req, res) => {
+    if(!req.session.admin){
+      req.session.admin = []
+    }
+
     knex('schedule')
     .fullOuterJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
     .then((results)=>{
@@ -58,7 +62,7 @@ module.exports = {
   },
 
   //update scheduled visits
-  update: (req, res) => {
+  updateVisit: (req, res) => {
     knex('schedule')
     .where('id', req.params.id)
     .update({
@@ -74,12 +78,79 @@ module.exports = {
         last_name: req.body.last_name
       })
       .then((data)=>{
-        console.log(data)
+        //console.log(data)
         res.redirect('/admin/homepage')
       })
     })
   },
 
+  //remove visit
+removeVisit: (req, res) => {
+  knex('schedule')
+  .where('id', req.params.id)
+  .delete()
+    .then(()=>{
+      res.redirect('/admin/homepage')
+    })
+},
+
+  //get admin edit pa page
+  editPaPage: (req, res)=>{
+    knex('parent_aids')
+    .where('id', req.params.id)
+    .then((results)=>{
+      //console.log(results)
+      res.render('admin_edit_pa', {pa:results})
+    })
+  },
+
+  //update admin edit pa
+  updatePA: (req, res) => {
+    knex('parent_aids')
+    .where('id', req.params.id)
+    .update ({
+      first_name: req.body.first_name,
+      middle_initial: req.body.middle_initial,
+      last_name: req.body.last_name,
+      agency_name: req.body.agency_name,
+      phone_number: req.body.phone_number,
+      email: req.body.email,
+      pw: req.body.pw
+    }).then(()=>{
+      res.redirect('/admin/homepage')
+    })
+  },
+
+  //remove pa
+  removePa: (req, res) => {
+    knex('parent_aids')
+    .where('id', req.params.id)
+    .delete()
+    .then(()=>{
+      res.redirect('/admin/homepage')
+    })
+  },
+
+  //get admin edit volunteer page
+  editVolPage: (req, res) => {
+    knex('volunteers')
+    .where('id', req.params.id)
+    .then((results)=>{
+      res.render('admin_edit_vol', {volunteer:results})
+    })
+  },
+
+  //update admin edit volunteer
+  updateVol: (req, res) => {
+    knex('volunteers')
+    .where('id', req.params.id)
+    .update({
+      username: req.body.username,
+      pw: req.body.pw
+    }).then(()=>{
+      res.redirect('/admin/homepage')
+    })
+  }
 
 
 

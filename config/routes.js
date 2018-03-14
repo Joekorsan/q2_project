@@ -59,8 +59,32 @@ module.exports = function(app) {
   //get admin edit scheduled visit PAGE
   app.get('/admin/auth/homepage/edit/visit/:id', admin.editVisitPage)
 
+
   //update scheduled visits
-  app.post('/admin/auth/homepage/edit/visit/:id', admin.update)
+  app.post('/admin/auth/homepage/edit/visit/:id', admin.updateVisit)
+
+
+  //remove a visit
+  app.get('/admin/homepage/remove/visit/:id', admin.removeVisit)
+
+  //get admin edit pa
+  app.get('/admin/homepage/edit/pa/:id', admin.editPaPage)
+
+
+  //update admin edit Pa
+  app.post('/admin/homepage/edit/pa/:id', admin.updatePA)
+
+  //remove pa
+  app.get('/admin/homepage/remove/pa/:id', admin.removePa);
+
+  // get admin edit volunteer page
+  app.get('/admin/homepage/edit/vol/:id', admin.editVolPage)
+
+  //update admin edit volunteer
+  app.post('/admin/homepage/edit/vol/:id', admin.updateVol)
+
+
+
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)
@@ -84,36 +108,3 @@ const validateVolunteer = (req, res, next) => {
 const validateAdmin = (req, res, next) => {
   req.session.admin ? next() : res.redirect('/admin');
 }
-
-
-// const validatePath = (req, res, next)=>{
-//   console.log('Path::::: ',req.path);
-//   let route = req.path;
-//   if(route.indexOf('/admin/homepage') !== -1 || req.session.admin){
-//     console.log("I AM COMING FROM ADMIN SITE")
-//     if (req.session.admin){
-//       next();
-//     } else {
-//       res.redirect('/admin')
-//     }
-//   } else if (route == '/volunteer/homepage' || req.session.volunteer) {
-//     console.log("I AM COMING FROM VOLUNTEER SITE")
-//     if (req.session.volunteer) {
-//       next();
-//     } else {
-//       res.redirect('/volunteer/login');
-//     }
-//   } else if (route == '/pa/schedule' ){
-//     if (req.session.pa) {
-//       next();
-//     } else {
-//       res.redirect('/pa/login');
-//     }
-//   } else if (route == '/kiosk/pa'){
-//     console.log("I AM COMING FROM KIOSK P.A. SITE")
-//   } else if (route == '/kiosk/parent'){
-//     console.log('I AM COMING FROM KIOSK PARENT SITE ')
-//     next();
-//   }
-//
-// }

@@ -10,6 +10,7 @@ module.exports = {
   signup: (req, res) => {
     res.render('pa_signup')
   },
+  
   validate: (req,res) =>{
     knex("parent_aids")
     .where({
@@ -58,7 +59,6 @@ module.exports = {
       parent_name : req.body.parent_name ,
       number_of_children : req.body.number_of_children ,
       appt_date: req.body.app_date
-
     })
     .then((result)=>{
       res.redirect("/pa/auth/schedule");
