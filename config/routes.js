@@ -35,15 +35,14 @@ module.exports = function(app) {
 //   app.use(validatePath);
 
 
-  app.get('/pa/auth/schedule',pa.schedule); app.post('/pa/auth/schedule', pa.postSchedule)
+  app.get('/pa/auth/schedule',pa.schedule); app.post('/pa/auth/schedule', pa.postSchedule);
 
   //app.get('/volunteer//login', v.login)
   // get volunteer homepage
-  app.get('/volunteer/auth/homepage', v.homepage) ;
+  app.get('/volunteer/auth/homepage', v.homepage);
 
   // get volunteer pa input
-  app.get('/volunteer/auth/invite', v.invite) ; app.post('/volunteer/auth/invite', v.postInvite)
-
+  app.get('/volunteer/auth/invite', v.invite);
 
   //if i went this route, i would only need to create one login contolller to handle
   //all of the routes for everybodys login without having to use auth in as a buffer.
@@ -60,32 +59,8 @@ module.exports = function(app) {
   //get admin edit scheduled visit PAGE
   app.get('/admin/auth/homepage/edit/visit/:id', admin.editVisitPage)
 
-
   //update scheduled visits
-  app.post('/admin/auth/homepage/edit/visit/:id', admin.updateVisit)
-
-
-  //remove a visit
-  app.get('/admin/auth/homepage/remove/visit/:id', admin.removeVisit)
-
-  //get admin edit pa
-  app.get('/admin/auth/homepage/edit/pa/:id', admin.editPaPage)
-
-
-  //update admin edit Pa
-  app.post('/admin/auth/homepage/edit/pa/:id', admin.updatePA)
-
-  //remove pa
-  app.get('/admin/auth/homepage/remove/pa/:id', admin.removePa);
-
-  // get admin edit volunteer page
-  app.get('/admin/auth/homepage/edit/vol/:id', admin.editVolPage)
-
-  //update admin edit volunteer
-  app.post('/admin/auth/homepage/edit/vol/:id', admin.updateVol)
-
-
-
+  app.post('/admin/auth/homepage/edit/visit/:id', admin.update)
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)
@@ -102,7 +77,7 @@ const validatePa = (req, res, next) => {
 }
 
 const validateVolunteer = (req, res, next) => {
-  // console.log('req', req.session)
+  //console.log('req', req.session)
   req.session.admin || req.session.volunteer ? next() : res.redirect('/volunteer/login');
 }
 
