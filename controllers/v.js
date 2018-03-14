@@ -1,5 +1,6 @@
 var knex = require('../db/knex');
 const nodemailer = require('nodemailer');
+let sendEmail = require('./mailer.js');
 
 module.exports = {
 
@@ -14,9 +15,7 @@ module.exports = {
       .innerJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
       .then((schedules) => {
 
-        res.render('volunteer_homepage', {
-          schedules
-        })
+        res.render('volunteer_homepage', {schedules}) 
 
       })
 
@@ -33,38 +32,15 @@ module.exports = {
     //email logic
 
       console.log("This node mail has been called");
-      // create reusable transporter object using the default SMTP transport
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        tls: true,
-        auth: {
-          user:  'nonprofitaz4@gmail.com',
-          pass: 'non-profit'
-        }
-      });
 
-      // setup email data with unicode symbols
       let mailOptions = {
-        from: '"From: Express " <gzsgee6az2pjt52y@ethereal.email>', // sender address
-        to: 'joekorsan@gmail.com', // list of receivers seperated by comma
-        subject: 'Email From Express', // Subject line
-        text: 'test', // plain text body
-        html: '<b>Hello world?</b>' // html body
+        from: '"From: AZ4CHILDREN " <nonprofitaz4@gmail.com>',
+        to: pa_email, // list of receivers seperated by comma
+        subject: 'Invite to P.A Login',
+        text: 'localhost:8000/pa',
+        html: ''
       };
-
-      // send mail with defined transport object
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        res.redirect('/volunteer/auth/homepage');
-
-      });
-
+      sendEmail(mailOptions);
   },
 
   validate: (req, res) => {

@@ -1,5 +1,5 @@
 var knex = require('../db/knex')
-
+let sendEmail = require('./mailer.js');
 module.exports = {
 
   // get pa login page
@@ -34,6 +34,7 @@ module.exports = {
     })
   },
   postSignup: (req,res) =>{
+
     knex("parent_aids")
     .insert({
       first_name : req.body.first_name,
@@ -53,12 +54,34 @@ module.exports = {
     res.render('pa_schedule',{ paObj : req.session.pa});
   },
   postSchedule: (req,res) =>{
+    let confirmationCode = ()=>{
+      return Math.floor(Math.random() * (9000 - 1000) + 1000 );
+    };
+    let gen_code = confirmationCode().toString();
+    // console.log(`Confirmation Number is ${cf_num} -- TYPE:  `,typeof(cf_num));
+
+    // setup email data with unicode symbols
+    knex("parent_aids")
+    .where('parent_aids.id',req.session.pa.id)
+    .then((result)=>{
+      let mailOptions = {
+        from: '"From: AZ4CHILDREN " <nonprofitaz4@gmail.com>',
+        to: result[0].email,
+        subject: 'Schedule Confirmation Code',
+        text: `ENTER THIS CODE AT THE KIOSK - ${gen_code}`,
+        html: ''
+      };
+      sendEmail(mailOptions);
+    })
+
+
     knex("schedule")
     .insert({
       parent_aids_id : req.session.pa.id,
       parent_name : req.body.parent_name ,
       number_of_children : req.body.number_of_children ,
-      appt_date: req.body.app_date
+      appt_date: req.body.app_date,
+      conf_code: gen_code
     })
     .then((result)=>{
       res.redirect("/pa/auth/schedule");
