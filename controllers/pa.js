@@ -1,6 +1,5 @@
 var knex = require('../db/knex')
-const nodemailer = require('nodemailer');
-
+let sendEmail = require('./mailer.js');
 module.exports = {
 
   // get pa login page
@@ -60,37 +59,19 @@ module.exports = {
     };
     let gen_code = confirmationCode().toString();
     // console.log(`Confirmation Number is ${cf_num} -- TYPE:  `,typeof(cf_num));
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      tls: true,
-      auth: {
-        user:  'nonprofitaz4@gmail.com',
-        pass: 'non-profit'
-      }
-    });
+
     // setup email data with unicode symbols
     knex("parent_aids")
     .where('parent_aids.id',req.session.pa.id)
     .then((result)=>{
       let mailOptions = {
-        from: '"From: AZ4CHILDREN " <nonprofitaz4@gmail.com>', // sender address
-        to: result[0].email, // list of receivers seperated by comma
-        subject: 'Schedule Confirmation Code', // Subject line
-        text: `ENTER THIS CODE AT THE KIOSK - ${gen_code}`, // plain text body
-        html: '' // html body
+        from: '"From: AZ4CHILDREN " <nonprofitaz4@gmail.com>',
+        to: result[0].email,
+        subject: 'Schedule Confirmation Code',
+        text: `ENTER THIS CODE AT THE KIOSK - ${gen_code}`,
+        html: ''
       };
-
-      // send mail with defined transport object
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        res.redirect('/volunteer/auth/homepage');
-      });
+      sendEmail(mailOptions);
     })
 
 
