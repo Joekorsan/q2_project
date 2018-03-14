@@ -7,7 +7,6 @@
   <body>
     <h2>LIST OF SCHEDULE TIMES</h2>
 
-    <a href='/admin/auth/homepage/pa/signup'><button>Add New Parent/Case Aid And Appt Time </button></a><BR><BR>
 
     <% for(let i=0; i<schedule.length; i++){ %>
       <% if(schedule[i].appt_date === null){ %>
@@ -28,6 +27,8 @@
 
 
         <h2>LIST OF PARENT/CASE AIDS</h2>
+
+          <a href='/admin/auth/homepage/pa/signup'><button>Add New Parent/Case Aid</button></a><BR><BR>
 
         <% for(let i=0; i<schedule.length;i++){ %>
         <p>
