@@ -33,7 +33,11 @@
                         Updated at: <%= schedule[i].updated_at %><BR>
                           <a href='/admin/auth/homepage/edit/pa/<%= schedule[i].parent_aids_id %>'>Edit</a><BR>
                             <a href='/admin/auth/homepage/remove/pa/<%= schedule[i].parent_aids_id %>'>Remove</a><BR>
-                              <a href='/pa/auth/schedule/<%= schedule[i].parent_aids_id %>'><button>Go to <%= schedule[i].first_name %> <%= schedule[i].last_name %>'s Page</button></a>
+                              <form action="/pa/login" method="POST">
+                                <input name="email" type="hidden" value="<%= schedule[i].email%>"></input>
+                                <input name="password" type="hidden" value="<%= schedule[i].pw %>"></input>
+                                <button>Go to <%= schedule[i].first_name %> <%= schedule[i].last_name %> page </button>
+                              </form>
 
         </p><BR>
           <% } %>

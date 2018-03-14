@@ -10,7 +10,7 @@ module.exports = {
   signup: (req, res) => {
     res.render('pa_signup')
   },
-  
+
   validate: (req,res) =>{
     knex("parent_aids")
     .where({
