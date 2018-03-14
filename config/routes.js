@@ -1,7 +1,7 @@
 const pa = require('../controllers/pa.js');
 const v = require('../controllers/v.js');
 const admin = require('../controllers/admin.js');
-const kiosk = require('../controllers/kiosk.js')
+const kiosk = require('../controllers/kiosk.js');
 
 
 module.exports = function(app) {
@@ -23,71 +23,98 @@ module.exports = function(app) {
   app.get('/kiosk', kiosk.checkin);
 
 
+//SECURE MIDDLEWARE
+  app.use('/admin/auth', validateAdmin);
+  app.use('/volunteer/auth', validateVolunteer);
+  app.use('/pa/auth', validatePa);
 
 
-//////MIDDLEWARE
-  app.use(validatePath);
 
-  app.get('/pa/schedule',pa.schedule); app.post('/pa/schedule', pa.postSchedule)
 
+// //////MIDDLEWARE
+//   app.use(validatePath);
+
+
+  app.get('/pa/auth/schedule',pa.schedule); app.post('/pa/auth/schedule', pa.postSchedule)
+
+  //app.get('/volunteer//login', v.login)
   // get volunteer homepage
-  app.get('/volunteer/homepage', v.homepage)
+  app.get('/volunteer/auth/homepage', v.homepage)
 
   // get volunteer pa input
-  app.get('/volunteer/pa', v.pa)
+  app.get('/volunteer/auth/pa', v.pa)
 
+  //if i went this route, i would only need to create one login contolller to handle
+  //all of the routes for everybodys login without having to use auth in as a buffer.
+  //that was each route can be protected due by it's specific middleware.
+  //the bottom route would be redirected by the to login if the auth is not PASSED.
+  //and when it is passed then it would allow access to whatever route is being accessed.
 
+  // app.get('/login/volunteer', login.volunteer)
 
   //get admin homepage
-  app.get('/admin/homepage', admin.homepage)
+
+  app.get('/admin/auth/homepage', admin.homepage)
 
   //get admin edit scheduled visit PAGE
-  app.get('/admin/homepage/edit/visit/:id', admin.editVisitPage)
+  app.get('/admin/auth/homepage/edit/visit/:id', admin.editVisitPage)
 
   //update scheduled visits
-  app.post('/admin/homepage/edit/visit/:id', admin.update)
+  app.post('/admin/auth/homepage/edit/visit/:id', admin.update)
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)
 
   //get kiosk for parent
   app.get('/kiosk/parent', kiosk.parent)
+
+}//end of module.exports
+
+
+
+const validatePa = (req, res, next) => {
+  req.session.pa || req.session.admin || req.session.volunteer ? next() : res.redirect('/pa/login');
 }
 
+const validateVolunteer = (req, res, next) => {
+  console.log('req', req.session) 
+  req.session.admin || req.session.volunteer ? next() : res.redirect('/volunteer/login');
+}
 
+const validateAdmin = (req, res, next) => {
+  req.session.admin ? next() : res.redirect('/admin');
+}
 
 
 const validatePath = (req, res, next)=>{
   console.log('Path::::: ',req.path);
 
-  let pa = req.path;
-  let volunteer = req.path;
-  let admin = req.path;
-  let kiosk = req.path;
 
-  if(admin == '/admin/homepage' || req.session.admin){
+  let route = req.path;
+
+  if(route.indexOf('/admin/homepage') !== -1 || req.session.admin){
     console.log("I AM COMING FROM ADMIN SITE")
     if (req.session.admin){
       next();
     } else {
       res.redirect('/admin')
     }
-  } else if (volunteer == '/volunteer/homepage' || req.session.volunteer) {
+  } else if (route == '/volunteer/homepage' || req.session.volunteer) {
     console.log("I AM COMING FROM VOLUNTEER SITE")
     if (req.session.volunteer) {
       next();
     } else {
       res.redirect('/volunteer/login');
     }
-  } else if (pa == '/pa/schedule' ){
+  } else if (route == '/pa/schedule' ){
     if (req.session.pa) {
       next();
     } else {
       res.redirect('/pa/login');
     }
-  } else if (kiosk == '/kiosk/pa'){
+  } else if (route == '/kiosk/pa'){
     console.log("I AM COMING FROM KIOSK P.A. SITE")
-  } else if (kiosk == '/kiosk/parent'){
+  } else if (route == '/kiosk/parent'){
     console.log('I AM COMING FROM KIOSK PARENT SITE ')
     next();
   }

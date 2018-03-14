@@ -6,6 +6,8 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('schedule').insert([
         {
+          parent_name:'John Snow',
+          number_of_children: 3,
           parent_aids_id: 1,
           appt_date: '2018-03-19'
         }

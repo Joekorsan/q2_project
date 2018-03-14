@@ -21,7 +21,7 @@ module.exports = {
       if(result.length != 0){
         req.session.pa = result[0];
         req.session.save(()=>{
-          res.redirect('/pa/schedule');
+          res.redirect('/pa/auth/schedule');
         })
       }else{
         res.render("pa_login",{err: 'user not found', paObj: []})
@@ -62,7 +62,7 @@ module.exports = {
 
     })
     .then((result)=>{
-      res.redirect("/pa/schedule");
+      res.redirect("/pa/auth/schedule");
     })
   },
   logout: (req,res)=>{

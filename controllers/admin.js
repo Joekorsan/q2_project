@@ -4,9 +4,9 @@ module.exports = {
 
   //get admin Login
   login: (req, res) => {
-    if(!req.session.admin){
-      req.session.admin = []
-    }
+    // if(!req.session.admin){
+    //   req.session.admin = []
+    // }
 
       res.render('admin_login')
     },
@@ -26,7 +26,7 @@ module.exports = {
       req.session.admin = admin;
       console.log(req.session.admin)
       req.session.save(()=>{
-        res.redirect('/admin/homepage')
+        res.redirect('/admin/auth/homepage')
       })
     }
     })

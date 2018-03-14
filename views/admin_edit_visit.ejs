@@ -11,7 +11,7 @@
   <h3>Update Schedule</h3>
 
   <% for(let i=0; i<schedule.length;i++){ %>
-  <form action="/admin/homepage/edit/<%= schedule[i].id %>" method="post">
+  <form action="/admin/auth/homepage/edit/<%= schedule[i].id %>" method="post">
     Parent/Case Aid:<BR>
     <input type="text" name="first_name" placeholder="First: <%= schedule[i].first_name %>" /><BR>
     <input type="text" name="last_name" placeholder="Last: <%= schedule[i].last_name %>" /><BR><BR>
