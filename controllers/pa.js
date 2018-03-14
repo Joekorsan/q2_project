@@ -57,7 +57,7 @@ module.exports = {
     let confirmationCode = ()=>{
       return Math.floor(Math.random() * (9000 - 1000) + 1000 );
     };
-    let gen_code = confirmationNumber().toString();
+    let gen_code = confirmationCode().toString();
     // console.log(`Confirmation Number is ${cf_num} -- TYPE:  `,typeof(cf_num));
     knex("schedule")
     .insert({
