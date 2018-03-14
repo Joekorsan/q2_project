@@ -15,9 +15,7 @@ module.exports = {
       .innerJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
       .then((schedules) => {
 
-        res.render('volunteer_homepage', {
-          schedules
-        })
+        res.render('volunteer_homepage', {schedules}) 
 
       })
 
