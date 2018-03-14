@@ -27,7 +27,6 @@ module.exports = {
       }else{
         res.render("pa_login",{err: 'user not found', paObj: []})
       }
-
     })
     .catch((err)=>{
       console.log(err);
