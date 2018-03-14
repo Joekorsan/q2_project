@@ -4,9 +4,9 @@ module.exports = {
 
   //get admin Login
   login: (req, res) => {
-    // if(!req.session.admin){
-    //   req.session.admin = []
-    // }
+    if(!req.session.admin){
+      req.session.admin = []
+    }
 
       res.render('admin_login')
     },
@@ -154,7 +154,29 @@ removeVisit: (req, res) => {
     }).then(()=>{
       res.redirect('/admin/auth/homepage')
     })
-  }
+  },
+
+  //post admin pa sign up
+  postSignup: (req,res) =>{
+    knex("parent_aids")
+    .insert({
+      first_name : req.body.first_name,
+      middle_initial: req.body.middle_initial,
+      last_name: req.body.last_name,
+      agency_name: req.body.agency_name,
+      phone_number: req.body.phone_number,
+      email: req.body.email,
+      pw: req.body.pw
+    })
+    .then((result)=>{
+      res.redirect('/admin/auth/homepage');
+    })
+  },
+
+//get sign up page
+  getSignup: (req, res) => {
+    res.render('admin_signup_pa')
+  },
 
 
 

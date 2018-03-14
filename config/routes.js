@@ -82,6 +82,12 @@ module.exports = function(app) {
   //update admin edit volunteer
   app.post('/admin/auth/homepage/edit/vol/:id', admin.updateVol)
 
+  //get admin pa sign up
+  app.get('/admin/auth/homepage/pa/signup', admin.getSignup)
+
+  //post admin pa sign up
+  app.post('/admin/auth/homepage/pa/signup', admin.postSignup)
+
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)

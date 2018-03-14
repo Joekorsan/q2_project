@@ -10,6 +10,9 @@ exports.up = function(knex, Promise) {
     table.string("parent_name");
     table.integer("number_of_children");
     table.date('appt_date');
+    table.string('conf_code');
+    table.boolean('parent_checkin').defaultTo(false);
+    table.boolean('pa_checkin').defaultTo(false)
     table.timestamps(true, true);
   })
 };
