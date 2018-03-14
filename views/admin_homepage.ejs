@@ -6,7 +6,9 @@
   </head>
   <body>
     <h2>LIST OF SCHEDULE TIMES</h2>
-    <% for(let i=0; i<schedule.length;i++){ %>
+    <% for(let i=0; i<schedule.length; i++){ %>
+      <% if(schedule[i].appt_date === null){ %>
+        <% } else { %>
       <p>App Date: <%= schedule[i].appt_date %><BR>
         Parent/Case Aid Name: <%= schedule[i].first_name %> <%= schedule[i].last_name %><BR>
           Parent(s): <%= schedule[i].parent_name %> -
@@ -18,6 +20,7 @@
 
           </p>
           <% } %>
+      <% } %>
         <BR><BR>
 
 
@@ -32,7 +35,7 @@
                       Created at: <%= schedule[i].created_at %><BR>
                         Updated at: <%= schedule[i].updated_at %><BR>
                           <a href='/admin/auth/homepage/edit/pa/<%= schedule[i].parent_aids_id %>'>Edit</a><BR>
-                            <a href='/admin/auth/homepage/remove/pa/<%= schedule[i].parent_aids_id %>'>Remove</a><BR>
+                            <a href='/admin/auth/homepage/remove/pa/<%= schedule[i].parent_aids_id %>'>Remove</a>
                               <form action="/pa/login" method="POST">
                                 <input name="email" type="hidden" value="<%= schedule[i].email%>"></input>
                                 <input name="password" type="hidden" value="<%= schedule[i].pw %>"></input>
