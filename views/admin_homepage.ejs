@@ -16,7 +16,7 @@
             <a href='/admin/auth/homepage/edit/visit/<%= schedule[i].id %>'>Edit</a><BR>
               <a href='/admin/auth/homepage/remove/visit/<%= schedule[i].id %>'>Remove</a>
 
-          </p><BR>
+          </p>
           <% } %>
         <BR><BR>
 
@@ -31,9 +31,10 @@
                     Password: <%= schedule[i].pw %><BR>
                       Created at: <%= schedule[i].created_at %><BR>
                         Updated at: <%= schedule[i].updated_at %><BR>
-                          <a href='/admin/homepage/edit/pa/<%= schedule[i].id %>'>Edit</a><BR>
-                            <a href='/admin/homepage/remove/pa/<%= schedule[i].id %>'>Remove</a>
-                              <small style='color:red'>** DISCLAIMER: Also removes schedule times assigned to this P.A.</small><br>
+                          <a href='/admin/auth/homepage/edit/pa/<%= schedule[i].parent_aids_id %>'>Edit</a><BR>
+                            <a href='/admin/auth/homepage/remove/pa/<%= schedule[i].parent_aids_id %>'>Remove</a><BR>
+                              <a href='/pa/auth/schedule/<%= schedule[i].parent_aids_id %>'><button>Go to <%= schedule[i].first_name %> <%= schedule[i].last_name %>'s Page</button></a>
+
         </p><BR>
           <% } %>
           <BR><BR>
@@ -42,7 +43,9 @@
           <% for(let i=0; i<volunteer.length;i++){ %>
             Username: <%= volunteer[i].username %><BR>
             Password: <%= volunteer[i].pw %><BR>
-              <a href='/admin/homepage/edit/vol/<%= volunteer[i].id %>'>Edit</a><BR>
+              <a href='/admin/auth/homepage/edit/vol/<%= volunteer[i].id %>'>Edit</a><BR>
+                <a href='/volunteer/auth/homepage'><button>Go To Volunteer Homepage</button></a>
+
             <% } %>
 
 

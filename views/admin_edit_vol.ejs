@@ -9,7 +9,7 @@
 <h1>Edit Volunteer Login</h1>
 
 <% for(let i=0; i<volunteer.length;i++){ %>
-<form action="/admin/homepage/edit/vol/<%= volunteer[i].id %>" method="post">
+<form action="/admin/auth/homepage/edit/vol/<%= volunteer[i].id %>" method="post">
   Username:<BR>
   <input type="text" name="username" value="<%= volunteer[i].username %>"><BR><BR>
     Password:<BR>

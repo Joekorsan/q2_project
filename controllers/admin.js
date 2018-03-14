@@ -24,7 +24,7 @@ module.exports = {
 
     if(admin.pw === req.body.pw){
       req.session.admin = admin;
-      console.log(req.session.admin)
+      //console.log(req.session.admin)
       req.session.save(()=>{
         res.redirect('/admin/auth/homepage')
       })
@@ -39,24 +39,27 @@ module.exports = {
       req.session.admin = []
     }
 
-    knex('schedule')
-    .fullOuterJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
+
+    knex('parent_aids')
+    .fullOuterJoin('schedule', 'schedule.parent_aids_id', 'parent_aids.id')
     .then((results)=>{
         knex('volunteers')
         .then((info)=>{
+          console.log(req.session.pa)
           res.render('admin_homepage', {schedule:results, volunteer:info})
         })
-
     })
   },
 
   //get admin edit scheduled visit PAGE
   editVisitPage: (req, res) => {
-    knex('schedule')
-    .innerJoin('parent_aids', 'schedule.parent_aids_id', 'parent_aids.id')
+    knex("schedule")
+    .innerJoin("parent_aids", 'schedule.parent_aids_id', 'parent_aids.id')
     .where('schedule.id', req.params.id)
     .then((results)=>{
-        //console.log(results)
+        console.log(results)
+        console.log(req.params.id)
+
         res.render('admin_edit_visit', {schedule:results})
       })
   },
@@ -79,18 +82,19 @@ module.exports = {
       })
       .then((data)=>{
         //console.log(data)
-        res.redirect('/admin/homepage')
+        res.redirect('/admin/auth/homepage')
       })
     })
   },
 
   //remove visit
 removeVisit: (req, res) => {
-  knex('schedule')
+  knex.select("id", "parent_name", "number_of_children", "appt_date", "created_at", "updated_at")
+  .from('schedule')
   .where('id', req.params.id)
   .delete()
     .then(()=>{
-      res.redirect('/admin/homepage')
+      res.redirect('/admin/auth/homepage')
     })
 },
 
@@ -117,7 +121,7 @@ removeVisit: (req, res) => {
       email: req.body.email,
       pw: req.body.pw
     }).then(()=>{
-      res.redirect('/admin/homepage')
+      res.redirect('/admin/auth/homepage')
     })
   },
 
@@ -127,7 +131,7 @@ removeVisit: (req, res) => {
     .where('id', req.params.id)
     .delete()
     .then(()=>{
-      res.redirect('/admin/homepage')
+      res.redirect('/admin/auth/homepage')
     })
   },
 
@@ -148,7 +152,7 @@ removeVisit: (req, res) => {
       username: req.body.username,
       pw: req.body.pw
     }).then(()=>{
-      res.redirect('/admin/homepage')
+      res.redirect('/admin/auth/homepage')
     })
   }
 

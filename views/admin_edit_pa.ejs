@@ -9,7 +9,7 @@
     <h1>Edit Parent/Case Aid Info</h1>
 
     <% for(let i=0;i<pa.length;i++){ %>
-    <form action="/admin/homepage/edit/pa/<%= pa[i].id %>" method="post">
+    <form action="/admin/auth/homepage/edit/pa/<%= pa[i].id %>" method="post">
     P.A. or C.A. Name:<BR>
       <input type="text" name="first_name" value="<%= pa[i].first_name %>"><BR>
       <input type="text" name="middle_initial" value="<%= pa[i].middle_initial %>"><BR>

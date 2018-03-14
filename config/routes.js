@@ -65,23 +65,23 @@ module.exports = function(app) {
 
 
   //remove a visit
-  app.get('/admin/homepage/remove/visit/:id', admin.removeVisit)
+  app.get('/admin/auth/homepage/remove/visit/:id', admin.removeVisit)
 
   //get admin edit pa
-  app.get('/admin/homepage/edit/pa/:id', admin.editPaPage)
+  app.get('/admin/auth/homepage/edit/pa/:id', admin.editPaPage)
 
 
   //update admin edit Pa
-  app.post('/admin/homepage/edit/pa/:id', admin.updatePA)
+  app.post('/admin/auth/homepage/edit/pa/:id', admin.updatePA)
 
   //remove pa
-  app.get('/admin/homepage/remove/pa/:id', admin.removePa);
+  app.get('/admin/auth/homepage/remove/pa/:id', admin.removePa);
 
   // get admin edit volunteer page
-  app.get('/admin/homepage/edit/vol/:id', admin.editVolPage)
+  app.get('/admin/auth/homepage/edit/vol/:id', admin.editVolPage)
 
   //update admin edit volunteer
-  app.post('/admin/homepage/edit/vol/:id', admin.updateVol)
+  app.post('/admin/auth/homepage/edit/vol/:id', admin.updateVol)
 
 
 
