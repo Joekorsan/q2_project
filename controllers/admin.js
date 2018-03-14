@@ -43,10 +43,13 @@ module.exports = {
     knex('parent_aids')
     .fullOuterJoin('schedule', 'schedule.parent_aids_id', 'parent_aids.id')
     .then((results)=>{
+      knex('parent_aids')
+      .then((pa)=>{
         knex('volunteers')
         .then((info)=>{
-          console.log(req.session.pa)
-          res.render('admin_homepage', {schedule:results, volunteer:info})
+          console.log(pa);
+          res.render('admin_homepage', {schedule:results, volunteer:info, pa:pa})
+      })
         })
     })
   },
@@ -158,7 +161,7 @@ removeVisit: (req, res) => {
 
   //post admin pa sign up
   postSignup: (req,res) =>{
-    knex("parent_aids")
+    knex('parent_aids')
     .insert({
       first_name : req.body.first_name,
       middle_initial: req.body.middle_initial,
@@ -166,11 +169,11 @@ removeVisit: (req, res) => {
       agency_name: req.body.agency_name,
       phone_number: req.body.phone_number,
       email: req.body.email,
-      pw: req.body.pw
+      pw: req.body.pw,
     })
-    .then((result)=>{
-      res.redirect('/admin/auth/homepage');
-    })
+    .then(()=>{
+        res.redirect('/admin/auth/homepage');
+      })
   },
 
 //get sign up page

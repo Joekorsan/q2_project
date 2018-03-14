@@ -6,6 +6,8 @@
   </head>
   <body>
     <h2>LIST OF SCHEDULE TIMES</h2>
+
+
     <% for(let i=0; i<schedule.length; i++){ %>
       <% if(schedule[i].appt_date === null){ %>
         <% } else { %>
@@ -26,24 +28,25 @@
 
         <h2>LIST OF PARENT/CASE AIDS</h2>
 
-        <a href='/admin/auth/homepage/pa/signup'><button>Add New Parent/Case Aid</button></a><BR><BR>
+          <a href='/admin/auth/homepage/pa/signup'><button>Add New Parent/Case Aid</button></a><BR><BR>
 
         <% for(let i=0; i<schedule.length;i++){ %>
         <p>
-          Name: <%= schedule[i].first_name %> <%= schedule[i].middle_initial %> <%= schedule[i].last_name %><BR>
-              Agency: <%= schedule[i].agency_name %><BR>
-                Phone Number: <%= schedule[i].phone_number %><BR>
-                  Email: <%= schedule[i].email %><BR>
-                    Password: <%= schedule[i].pw %><BR>
-                      Created at: <%= schedule[i].created_at %><BR>
-                        Updated at: <%= schedule[i].updated_at %><BR>
-                          <a href='/admin/auth/homepage/edit/pa/<%= schedule[i].parent_aids_id %>'>Edit</a><BR>
-                            <a href='/admin/auth/homepage/remove/pa/<%= schedule[i].parent_aids_id %>'>Remove</a>
+          Name: <%= pa[i].first_name %> <%= pa[i].middle_initial %> <%= pa[i].last_name %><BR>
+              Agency: <%= pa[i].agency_name %><BR>
+                Phone Number: <%= pa[i].phone_number %><BR>
+                  Email: <%= pa[i].email %><BR>
+                    Password: <%= pa[i].pw %><BR>
+                      Created at: <%= pa[i].created_at %><BR>
+                        Updated at: <%= pa[i].updated_at %><BR>
+                          <a href='/admin/auth/homepage/edit/pa/<%= pa[i].id %>'>Edit</a><BR>
+                            <a href='/admin/auth/homepage/remove/pa/<%= pa[i].id %>'>Remove</a>
                               <form action="/pa/login" method="POST">
-                                <input name="email" type="hidden" value="<%= schedule[i].email%>"></input>
-                                <input name="password" type="hidden" value="<%= schedule[i].pw %>"></input>
-                                <button>Go to <%= schedule[i].first_name %> <%= schedule[i].last_name %> page </button>
+                                <input name="email" type="hidden" value="<%= pa[i].email%>"></input>
+                                <input name="password" type="hidden" value="<%= pa[i].pw %>"></input>
+                                <button>Go to <%= pa[i].first_name %> <%= pa[i].last_name %> page </button>
                               </form>
+
 
         </p><BR>
           <% } %>
