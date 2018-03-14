@@ -88,6 +88,9 @@ module.exports = function(app) {
   //post admin pa sign up
   app.post('/admin/auth/homepage/pa/signup', admin.postSignup)
 
+  //get Metrics
+  //app.get('/admin/auth/metrics', admin.metrics)
+
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)

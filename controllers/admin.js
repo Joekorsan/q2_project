@@ -47,7 +47,7 @@ module.exports = {
       .then((pa)=>{
         knex('volunteers')
         .then((info)=>{
-          console.log(pa);
+          //console.log(pa);
           res.render('admin_homepage', {schedule:results, volunteer:info, pa:pa})
       })
         })
@@ -60,8 +60,8 @@ module.exports = {
     .innerJoin("parent_aids", 'schedule.parent_aids_id', 'parent_aids.id')
     .where('schedule.id', req.params.id)
     .then((results)=>{
-        console.log(results)
-        console.log(req.params.id)
+        //console.log(results)
+        //console.log(req.params.id)
 
         res.render('admin_edit_visit', {schedule:results})
       })
@@ -176,12 +176,12 @@ removeVisit: (req, res) => {
       })
   },
 
-//get sign up page
+  //get sign up page
   getSignup: (req, res) => {
     res.render('admin_signup_pa')
   },
 
-
+  //get metrics
 
 
 }// end of exports
