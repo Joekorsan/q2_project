@@ -77,7 +77,7 @@ const validatePa = (req, res, next) => {
 }
 
 const validateVolunteer = (req, res, next) => {
-  console.log('req', req.session) 
+  console.log('req', req.session)
   req.session.admin || req.session.volunteer ? next() : res.redirect('/volunteer/login');
 }
 
@@ -86,37 +86,34 @@ const validateAdmin = (req, res, next) => {
 }
 
 
-const validatePath = (req, res, next)=>{
-  console.log('Path::::: ',req.path);
-
-
-  let route = req.path;
-
-  if(route.indexOf('/admin/homepage') !== -1 || req.session.admin){
-    console.log("I AM COMING FROM ADMIN SITE")
-    if (req.session.admin){
-      next();
-    } else {
-      res.redirect('/admin')
-    }
-  } else if (route == '/volunteer/homepage' || req.session.volunteer) {
-    console.log("I AM COMING FROM VOLUNTEER SITE")
-    if (req.session.volunteer) {
-      next();
-    } else {
-      res.redirect('/volunteer/login');
-    }
-  } else if (route == '/pa/schedule' ){
-    if (req.session.pa) {
-      next();
-    } else {
-      res.redirect('/pa/login');
-    }
-  } else if (route == '/kiosk/pa'){
-    console.log("I AM COMING FROM KIOSK P.A. SITE")
-  } else if (route == '/kiosk/parent'){
-    console.log('I AM COMING FROM KIOSK PARENT SITE ')
-    next();
-  }
-
-}
+// const validatePath = (req, res, next)=>{
+//   console.log('Path::::: ',req.path);
+//   let route = req.path;
+//   if(route.indexOf('/admin/homepage') !== -1 || req.session.admin){
+//     console.log("I AM COMING FROM ADMIN SITE")
+//     if (req.session.admin){
+//       next();
+//     } else {
+//       res.redirect('/admin')
+//     }
+//   } else if (route == '/volunteer/homepage' || req.session.volunteer) {
+//     console.log("I AM COMING FROM VOLUNTEER SITE")
+//     if (req.session.volunteer) {
+//       next();
+//     } else {
+//       res.redirect('/volunteer/login');
+//     }
+//   } else if (route == '/pa/schedule' ){
+//     if (req.session.pa) {
+//       next();
+//     } else {
+//       res.redirect('/pa/login');
+//     }
+//   } else if (route == '/kiosk/pa'){
+//     console.log("I AM COMING FROM KIOSK P.A. SITE")
+//   } else if (route == '/kiosk/parent'){
+//     console.log('I AM COMING FROM KIOSK PARENT SITE ')
+//     next();
+//   }
+//
+// }
