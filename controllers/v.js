@@ -46,11 +46,11 @@ module.exports = {
 
       // setup email data with unicode symbols
       let mailOptions = {
-        from: '"From: Express " <gzsgee6az2pjt52y@ethereal.email>', // sender address
-        to: 'joekorsan@gmail.com', // list of receivers seperated by comma
-        subject: 'Email From Express', // Subject line
-        text: 'test', // plain text body
-        html: '<b>Hello world?</b>' // html body
+        from: '"From: AZ4CHILDREN " <nonprofitaz4@gmail.com>', // sender address
+        to: pa_email, // list of receivers seperated by comma
+        subject: 'Invite to P.A Login', // Subject line
+        text: 'localhost:8000/pa', // plain text body
+        html: '' // html body
       };
 
       // send mail with defined transport object

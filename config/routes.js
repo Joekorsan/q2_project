@@ -96,7 +96,6 @@ module.exports = function(app) {
 const validatePa = (req, res, next) => {
   req.session.pa || req.session.admin || req.session.volunteer ? next() : res.redirect('/pa/login');
 }
-
 const validateVolunteer = (req, res, next) => {
   //console.log('req', req.session)
   req.session.admin || req.session.volunteer ? next() : res.redirect('/volunteer/login');
