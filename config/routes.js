@@ -39,10 +39,11 @@ module.exports = function(app) {
 
   //app.get('/volunteer//login', v.login)
   // get volunteer homepage
-  app.get('/volunteer/auth/homepage', v.homepage)
+  app.get('/volunteer/auth/homepage', v.homepage) ;
 
   // get volunteer pa input
-  app.get('/volunteer/auth/pa', v.pa)
+  app.get('/volunteer/auth/invite', v.invite) ; app.post('/volunteer/auth/invite', v.postInvite)
+
 
   //if i went this route, i would only need to create one login contolller to handle
   //all of the routes for everybodys login without having to use auth in as a buffer.
@@ -101,7 +102,7 @@ const validatePa = (req, res, next) => {
 }
 
 const validateVolunteer = (req, res, next) => {
-  console.log('req', req.session)
+  // console.log('req', req.session)
   req.session.admin || req.session.volunteer ? next() : res.redirect('/volunteer/login');
 }
 
