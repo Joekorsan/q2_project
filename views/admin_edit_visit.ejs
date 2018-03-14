@@ -13,12 +13,12 @@
   <% for(let i=0; i<schedule.length;i++){ %>
   <form action="/admin/homepage/edit/<%= schedule[i].id %>" method="post">
     Parent/Case Aid:<BR>
-    <input type="text" name="first_name" placeholder="First: <%= schedule[i].first_name %>" /><BR>
-    <input type="text" name="last_name" placeholder="Last: <%= schedule[i].last_name %>" /><BR><BR>
+    <input type="text" name="first_name" value="<%= schedule[i].first_name %>" /><BR>
+    <input type="text" name="last_name" value="<%= schedule[i].last_name %>" /><BR><BR>
     Parent(s):
-    <input type="text" name="parent_name" placeholder="<%= schedule[i].parent_name %>" /><BR><BR>
+    <input type="text" name="parent_name" value="<%= schedule[i].parent_name %>" /><BR><BR>
     Number of Children:
-    <input type="text" name="number_of_children" placeholder="<%= schedule[i].number_of_children %>" /><BR><BR>
+    <input type="text" name="number_of_children" value="<%= schedule[i].number_of_children %>" /><BR><BR>
     <button type="submit">Update Schedule</button>
   </form>
 <% } %>

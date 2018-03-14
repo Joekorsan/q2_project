@@ -45,7 +45,25 @@ module.exports = function(app) {
   app.get('/admin/homepage/edit/visit/:id', admin.editVisitPage)
 
   //update scheduled visits
-  app.post('/admin/homepage/edit/visit/:id', admin.update)
+  app.post('/admin/homepage/edit/visit/:id', admin.updateVisit)
+
+  //remove a visit
+  app.get('/admin/homepage/remove/visit/:id', admin.removeVisit)
+
+  //get admin edit pa
+  app.get('/admin/homepage/edit/pa/:id', admin.editPaPage)
+
+  //update admin edit Pa
+  app.post('/admin/homepage/edit/pa/:id', admin.updatePA)
+
+  //remove pa
+  app.get('/admin/homepage/remove/pa/:id', admin.removePa);
+
+  // get admin edit volunteer page
+  app.get('/admin/homepage/edit/vol/:id', admin.editVolPage)
+
+  //update admin edit volunteer
+  app.post('/admin/homepage/edit/vol/:id', admin.updateVol)
 
   //get kiosk for pa
   app.get('/kiosk/pa', kiosk.pa)

@@ -32,7 +32,8 @@
                       Created at: <%= schedule[i].created_at %><BR>
                         Updated at: <%= schedule[i].updated_at %><BR>
                           <a href='/admin/homepage/edit/pa/<%= schedule[i].id %>'>Edit</a><BR>
-                            <a href='/admin/homepage/remove/pa/<%= schedule[i].id %>'>Remove</a><BR>
+                            <a href='/admin/homepage/remove/pa/<%= schedule[i].id %>'>Remove</a>
+                              <small style='color:red'>** DISCLAIMER: Also removes schedule times assigned to this P.A.</small><br>
         </p><BR>
           <% } %>
           <BR><BR>
@@ -41,6 +42,7 @@
           <% for(let i=0; i<volunteer.length;i++){ %>
             Username: <%= volunteer[i].username %><BR>
             Password: <%= volunteer[i].pw %><BR>
+              <a href='/admin/homepage/edit/vol/<%= volunteer[i].id %>'>Edit</a><BR>
             <% } %>
 
 

@@ -8,5 +8,23 @@
 
     <h1>Edit Parent/Case Aid Info</h1>
 
+    <% for(let i=0;i<pa.length;i++){ %>
+    <form action="/admin/homepage/edit/pa/<%= pa[i].id %>" method="post">
+    P.A. or C.A. Name:<BR>
+      <input type="text" name="first_name" value="<%= pa[i].first_name %>"><BR>
+      <input type="text" name="middle_initial" value="<%= pa[i].middle_initial %>"><BR>
+      <input type="text" name="last_name" value="<%= pa[i].last_name %>"><BR><BR>
+        Agency Name:<BR>
+      <input type="text" name="agency_name" value="<%= pa[i].agency_name %>"><BR><BR>
+        Phone Number:<BR>
+      <input type="text" name="phone_number" value="<%= pa[i].phone_number %>"><BR><BR>
+        Email:<BR>
+      <input type="text" name="email" value="<%= pa[i].email %>"><BR><BR>
+        Password:<BR>
+      <input type="text" name="pw" value="<%= pa[i].pw %>"><BR>
+      <button type="submit">Update Info</button>
+
+    </form>
+    <% } %>
   </body>
 </html>
