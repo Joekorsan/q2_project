@@ -51,7 +51,11 @@ module.exports = {
   },
   schedule: (req,res) => {
     console.log(req.session.pa);
-    res.render('pa_schedule',{ paObj : req.session.pa});
+    knex("schedule")
+    .where("schedule.parent_aids_id" , req.session.pa.id)
+    .then((result)=>{
+      res.render('pa_schedule',{ paObj : req.session.pa , schedules: result});
+    })
   },
   postSchedule: (req,res) =>{
     let confirmationCode = ()=>{

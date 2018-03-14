@@ -43,6 +43,7 @@ module.exports = {
         html: ''
       };
       sendEmail(mailOptions);
+      res.redirect('/volunteer/auth/homepage');
   },
 
   validate: (req, res) => {

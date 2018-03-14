@@ -5,13 +5,24 @@
     <title></title>
   </head>
   <body>
-    SCHEDULE
+    <h5>LOGGED IN AS <%= paObj.first_name %></h5>
+    Create Schedule
     <form action="/pa/auth/schedule" method="post">
-      <input type="text" name="parent_name" value="" placeholder="Parent Name">
-      <input type="text" name="number_of_children" value="" placeholder="Number Of Children">
-      <input type="text" name="app_date" value="" placeholder="Appt Date">
+      <input type="text" name="parent_name" value="" placeholder="Parent Name"><br>
+      <input type="text" name="number_of_children" value="" placeholder="Number Of Children"><br>
+      <input type="text" name="app_date" value="" placeholder="Appt Date"><br>
       <input type="submit" />
     </form>
+    <h4>SCHEDULES</h4>
+    <% for(i=0; i  <  schedules.length;i++) { %>
+      <hr>
+      <li>
+        DATE: <%= schedules[i].appt_date  %><br>
+        PARENT NAME:<%= schedules[i].parent_name  %><br>
+        Number of Children: <%= schedules[i].number_of_children  %>
+      </li>
+      <hr>
+      <%} %>
     <a href="/pa/logout">LOGOUT</a>
   </body>
 </html>
