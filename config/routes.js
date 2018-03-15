@@ -89,7 +89,7 @@ module.exports = function(app) {
   app.post('/admin/auth/homepage/pa/signup', admin.postSignup)
 
   //get Metrics
-  //app.get('/admin/auth/metrics', admin.metrics)
+  app.get('/admin/auth/metrics', admin.metrics)
 
 
   //get kiosk for pa

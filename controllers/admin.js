@@ -57,12 +57,8 @@ module.exports = {
   //get admin edit scheduled visit PAGE
   editVisitPage: (req, res) => {
     knex("schedule")
-    .innerJoin("parent_aids", 'schedule.parent_aids_id', 'parent_aids.id')
-    .where('schedule.id', req.params.id)
+    .where('id', req.params.id)
     .then((results)=>{
-        //console.log(results)
-        //console.log(req.params.id)
-
         res.render('admin_edit_visit', {schedule:results})
       })
   },
@@ -72,21 +68,12 @@ module.exports = {
     knex('schedule')
     .where('id', req.params.id)
     .update({
+      appt_date: req.body.appt_date,
       parent_name: req.body.parent_name,
       number_of_children: req.body.number_of_children
-    }, '*')
-    .then((schedule)=>{
-      let parent_aids_id = schedule[0].parent_aids_id;
-      knex('parent_aids')
-      .where('id', parent_aids_id)
-      .update({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name
-      })
-      .then((data)=>{
-        //console.log(data)
+    })
+    .then(()=>{
         res.redirect('/admin/auth/homepage')
-      })
     })
   },
 
@@ -182,6 +169,23 @@ removeVisit: (req, res) => {
   },
 
   //get metrics
-
+  metrics: (req, res) => {
+      knex('schedule').sum('number_of_children')
+      .then((sum)=>{
+        knex('schedule').count('appt_date')
+        .then((appt)=>{
+          knex('schedule').count('pa_checkin')
+          .where('pa_checkin', true)
+          .then((paCheck)=>{
+            knex('schedule').count('parent_checkin')
+            .where('parent_checkin', true)
+            .then((parentCheck)=>{
+              //console.log(parentCheck)
+              res.render('admin_metrics', {sumChildren:sum, countAppt:appt, paCheck:paCheck, parentCheck:parentCheck})
+            })
+          })
+      })
+    })
+  }
 
 }// end of exports
