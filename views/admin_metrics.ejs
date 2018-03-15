@@ -5,6 +5,31 @@
     <title></title>
   </head>
   <body>
-    METRICS
+    <h1>Metrics</h1>
+
+    <h3>Month(ITS NOT MONTHLY YET JUST TOTAL) Graph</h3>
+
+
+
+    <% for(let i=0;i<sumChildren.length;i++){ %>
+    Number of Children: <%= sumChildren[i].sum %>
+    <% } %><BR>
+
+    <% for(let i=0;i<countAppt.length;i++){ %>
+        Number of Visits <%= countAppt[i].count %>
+        <% } %><BR>
+
+      <% for(let i=0;i<paCheck.length;i++) { %>
+        Number of PA visits: <%= paCheck[i].count %><BR>
+          <% } %>
+
+          <% for(let i=0; i<parentCheck.length;i++){ %>
+            Number of Parent visits: <%= paCheck[i].count %><BR>
+            <% } %>
+
+
+<hr>
+<a href="/admin/auth/homepage">Go Back</a>
+
   </body>
 </html>
