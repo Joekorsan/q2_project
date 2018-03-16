@@ -37,8 +37,10 @@ module.exports = {
     }
     knex('parent_aids')
     .fullOuterJoin('schedule', 'schedule.parent_aids_id', 'parent_aids.id')
+    .orderBy('schedule.id')
     .then((results)=>{
       knex('parent_aids')
+      .orderBy('id')
       .then((pa)=>{
         knex('volunteers')
         .then((info)=>{
