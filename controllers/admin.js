@@ -64,7 +64,8 @@ module.exports = {
     .where('id', req.params.id)
     .update({
       appt_date: req.body.appt_date,
-      parent_name: req.body.parent_name,
+      parent_firstName: req.body.parent_firstName,
+      parent_lastName: req.body.parent_lastName,
       number_of_children: req.body.number_of_children
     })
     .then(()=>{
