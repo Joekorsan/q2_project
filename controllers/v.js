@@ -37,7 +37,7 @@ module.exports = {
         from: '"From: AZ4CHILDREN " <nonprofitaz4@gmail.com>',
         to: pa_email, // list of receivers seperated by comma
         subject: 'Invite to P.A Login',
-        text: 'https://arizonanforchildren.herokuapp.com/',
+        text: 'localhost:8000/pa',
         html: ''
       };
       sendEmail(mailOptions);
