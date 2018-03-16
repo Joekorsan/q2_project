@@ -178,7 +178,8 @@ form input::placeholder{
 }
 .footer{
   grid-column: span 3;
-  background:  #2A6AF1;
+  /* background:  #2A6AF1; */
+  background:none;
 }
 .admin-container{
   display:grid;
