@@ -4,10 +4,7 @@ module.exports = {
 
   //get admin Login
   login: (req, res) => {
-    if(!req.session.admin){
-      req.session.admin = []
-    }
-
+    
       res.render('admin_login')
     },
 

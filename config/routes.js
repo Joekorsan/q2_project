@@ -6,12 +6,20 @@ const kiosk = require('../controllers/kiosk.js');
 
 module.exports = function(app) {
 
+  //SECURE MIDDLEWARE
+  app.use('/admin/auth', validateAdmin);
+  app.use('/volunteer/auth', validateVolunteer);
+  app.use('/pa/auth', validatePa);
 
   // get pa login page
   app.get('/', pa.login);
 
   //get pa sign up
-  app.get('/pa/login',pa.login); app.post('/pa/login', pa.validate); app.get('/pa/signup', pa.signup); app.post('/pa/signup',pa.postSignup); app.get('/pa/logout' , pa.logout);
+  app.get('/pa/login',pa.login);
+  app.post('/pa/login', pa.validate);
+  app.get('/pa/signup', pa.signup);
+  app.post('/pa/signup',pa.postSignup);
+  app.get('/pa/logout' , pa.logout);
 
   // get volunteer login and post
   app.get('/volunteer/login', v.login); app.post('/volunteer/login', v.validate); app.get('/volunteer/logout', v.logout);
@@ -23,10 +31,7 @@ module.exports = function(app) {
   app.get('/kiosk', kiosk.checkin);
 
 
-//SECURE MIDDLEWARE
-  app.use('/admin/auth', validateAdmin);
-  app.use('/volunteer/auth', validateVolunteer);
-  app.use('/pa/auth', validatePa);
+
 
 
 
@@ -35,22 +40,17 @@ module.exports = function(app) {
 //   app.use(validatePath);
 
 
-  app.get('/pa/auth/schedule',pa.schedule); app.post('/pa/auth/schedule', pa.postSchedule);
+  app.get('/pa/auth/schedule',pa.schedule);
+  app.post('/pa/auth/schedule', pa.postSchedule);
 
   //app.get('/volunteer//login', v.login)
   // get volunteer homepage
   app.get('/volunteer/auth/homepage', v.homepage);
 
   // get volunteer pa input
-  app.get('/volunteer/auth/invite', v.invite); app.post('/volunteer/auth/invite' , v.postInvite)
+  app.get('/volunteer/auth/invite', v.invite);
+  app.post('/volunteer/auth/invite' , v.postInvite)
 
-  //if i went this route, i would only need to create one login contolller to handle
-  //all of the routes for everybodys login without having to use auth in as a buffer.
-  //that was each route can be protected due by it's specific middleware.
-  //the bottom route would be redirected by the to login if the auth is not PASSED.
-  //and when it is passed then it would allow access to whatever route is being accessed.
-
-  // app.get('/login/volunteer', login.volunteer)
 
   //get admin homepage
   app.get('/admin/auth/homepage', admin.homepage)
@@ -93,10 +93,14 @@ module.exports = function(app) {
 
 
   //get kiosk for pa
-  app.get('/kiosk/pa', kiosk.pa)
+  app.get('/kiosk/pa', kiosk.pa);
+  app.post('/kiosk/pa', kiosk.paCheckIn);
+
 
   //get kiosk for parent
   app.get('/kiosk/parent', kiosk.parent)
+  app.post('/kiosk/parent', kiosk.parentCheckIn);
+
 
 }//end of module.exports
 

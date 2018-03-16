@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h3>welcome: <%= pa.first_name %> <%= pa.last_name %></h3>
+    <hr>
+    <br>
+    <h2>Schedule info</h2>
+
+    <div>
+      Visit Date: <%= schedule.appt_date %>
+      <br>
+      parent: <%= schedule.parent_firstName %> <%= schedule.parent_lastName %>
+      <br>
+      Number of Children: <%= schedule.number_of_children %>
+    </div>
+
+    <script type="text/javascript">
+      setTimeout(()=>{
+        window.location.href = '/kiosk'
+      },5000)
+    </script>
+  </body>
+</html>

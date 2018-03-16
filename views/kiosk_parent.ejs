@@ -6,5 +6,14 @@
   </head>
   <body>
     CHECK IN KIOSK FOR PARENTS
+    <br>
+    <form action="/kiosk/parent" method="post">
+      Name: <input type="text" name="parent_firstName" placeholder="First">
+      <input type="text" name="parent_lastName" placeholder="Last">
+      <button type="submit" >checkin</button>
+    </form>
+    <% if(err){ %>
+     <h4><%= err %></h4>
+   <% } %>
   </body>
 </html>

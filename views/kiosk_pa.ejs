@@ -5,6 +5,17 @@
     <title></title>
   </head>
   <body>
-    INPUT CONFIRMATION CODE FOR KIOSK 
+    INPUT CONFIRMATION CODE FOR KIOSK
+    <br>
+    <br>
+    Enter Code to check-in
+    <br>
+    <form action="/kiosk/pa" method="post">
+      <input type="text" name="code" placeholder="ex. 3817">
+      <button type="submit" >check-in</button>
+      <% if(err){ %>
+       <h4><%= err %></h4>
+     <% } %>
+    </form>
   </body>
 </html>
