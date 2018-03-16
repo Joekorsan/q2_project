@@ -82,7 +82,8 @@ module.exports = {
     knex("schedule")
     .insert({
       parent_aids_id : req.session.pa.id,
-      parent_name : req.body.parent_name ,
+      parent_firstName : req.body.parent_firstName ,
+      parent_lastName : req.body.parent_lastName ,
       number_of_children : req.body.number_of_children ,
       appt_date: req.body.app_date,
       conf_code: gen_code

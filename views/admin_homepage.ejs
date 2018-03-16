@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="https://use.fontawesome.com/44d41c7531.js"></script>
   </head>
   <body>
 
 <a href="/admin/auth/metrics"><button>Metrics</button></a>
 
-    <h2>LIST OF SCHEDULE TIMES</h2>
+    <h2>Scheduled Times</h2>
     <% for(let i=0; i<schedule.length; i++){ %>
       <% if(schedule[i].appt_date === null){ %>
         <% } else { %>
@@ -28,7 +30,7 @@
           <hr>
 
 
-        <h2>LIST OF PARENT/CASE AIDS</h2>
+        <h2>Approved Parent Aids</h2>
 
           <a href='/admin/auth/homepage/pa/signup'><button>Add New Parent/Case Aid</button></a><BR><BR>
 
@@ -56,7 +58,7 @@
 
             <hr>
 
-          <h2>CURRENT VOLUNTEER LOGIN INFORMATION</h2>
+          <h2>Volunteer Login</h2>
           <% for(let i=0; i<volunteer.length;i++){ %>
             Username: <%= volunteer[i].username %><BR>
             Password: <%= volunteer[i].pw %><BR>

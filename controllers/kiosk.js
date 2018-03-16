@@ -34,8 +34,8 @@ module.exports = {
           })
         })
       }else{
-        res.render('kiosk_pa', {err: `This Code does not exist ${req.body.code} does not exist in our system
-        please re-enter code or see front desk`})
+        res.render('kiosk_pa', {err: `This confirmation code ${req.body.code} does not exist in our system.
+        Please re-enter code or see front desk`})
       }
     })
   },
@@ -50,8 +50,8 @@ module.exports = {
       if (parent[0]) {
         res.render('kiosk_parent_welcome', {parent:parent[0]})
       }else{
-        res.render('kiosk_parent', {err: `The name ${req.body.parent_firstName} ${req.body.parent_lastName} was not found in our system
-        please re-enter name or see front desk`})
+        res.render('kiosk_parent', {err: `The name ${req.body.parent_firstName} ${req.body.parent_lastName} was not found in our system.
+        Please re-enter name or see front desk.`})
       }
 
 

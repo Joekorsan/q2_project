@@ -10,30 +10,29 @@
     <div class='main admin-container'>
       <!-- <img class="logo" src="../logo.png"></img> -->
       <div class="top-nav">
-        <!-- <div class="item"><a href="/admin/auth/metrics">METRICS</a></div> -->
-        <div class="item"><a href="admin_homepage.html">HOME</a></div>
-        <div class="item"><a href="admin_edit_pa.html">METRICS</a></div>
+
         <div></div>
-        <div class="item" style="text-align: right; margin-right: 15px"><a href="/pa/logout">LOGOUT</a></div>
+        <div class="item" style="text-align: right;"><a href="/pa/logout">LOGOUT</a></div>
       </div>
 
       <div class="content">
         <h3>Create Schedule</h3>
         <form action="/pa/auth/schedule" method="post">
-          <input type="text" name="parent_name" value="" placeholder="Parent Name"><br>
+          <input type="text" name="parent_firstName" value="" placeholder="Parent First Name"><br>
+          <input type="text" name="parent_lastName" value="" placeholder="Parent Last Name"><BR>
           <input type="text" name="number_of_children" value="" placeholder="Number Of Children"><br>
           <input type="text" name="app_date" value="" placeholder="Appt Date"><br>
           <input type="submit" />
-        </form>
+        </form><BR><BR>
       </div>
       <div class="content">
         <h3>Scheduled Visits</h3>
         <% for(i=0; i  <  schedules.length;i++) { %>
           <li>
             DATE: <%= schedules[i].appt_date  %><br>
-            PARENT NAME:<%= schedules[i].parent_name  %><br>
+            PARENT NAME:<%= schedules[i].parent_firstName  %> <%= schedules[i].parent_lastName  %><br>
             Number of Children: <%= schedules[i].number_of_children  %>
-          </li>
+          </li><BR>
           <%} %>
       </div>
 

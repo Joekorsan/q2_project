@@ -71,11 +71,11 @@ body{
   display:block;
   text-decoration: none;
   color:black;
-  margin-left:75%;
+  margin-left:65%;
 }
 
 .enter-btn{
-  margin-left: 40%;
+  margin-left: 45%;
   outline:none;
   background: #E8F4FA;
   width: 120px;
@@ -173,7 +173,6 @@ form input::placeholder{
   width:90%;
   margin-left:5%;
 }
-
 .footer{
   grid-column: span 3;
   background:  #2A6AF1;
@@ -206,9 +205,6 @@ form input::placeholder{
 }
 
 
-.edit-form{
-
-}
 .edit-form input{
   width:200px;
   height:30px;
