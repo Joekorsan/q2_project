@@ -10,6 +10,12 @@ exports.seed = function(knex, Promise) {
           last_name: 's',
           username: 'j23',
           pw: 'koko'
+        },
+        {
+          first_name: 'laura',
+          last_name: 'p.',
+          username: 'laura',
+          pw: 'koko'
         }
       ]);
     });
