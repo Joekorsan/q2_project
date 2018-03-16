@@ -3,19 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="https://use.fontawesome.com/44d41c7531.js"></script>
   </head>
   <body>
+    <div class='main admin-container'>
+      <!-- <img class="logo" src="../logo.png"></img> -->
+      <div class="top-nav">
+        <!-- <div class="item"><a href="/admin/auth/metrics">METRICS</a></div> -->
+        <div class="item"><a href="/admin/auth/homepage">HOME</a></div>
+        <div class="item"><a href="/admin/auth/metrics">METRICS</a></div>
+        <div></div>
+        <div class="item" style="text-align: right; margin-right: 15px"><a href="/pa/logout">LOGOUT</a></div>
 
-<h1>Edit Volunteer Login</h1>
+      </div>
 
-<% for(let i=0; i<volunteer.length;i++){ %>
-<form action="/admin/auth/homepage/edit/vol/<%= volunteer[i].id %>" method="post">
-  Username:<BR>
-  <input type="text" name="username" value="<%= volunteer[i].username %>"><BR><BR>
-    Password:<BR>
-  <input type="text" name="pw" value="<%= volunteer[i].pw %>"><BR>
-<button type="submit">Update Info</button>
-</form>
-<% } %>
+      <div class="content">
+
+        <% for(let i=0; i<volunteer.length;i++){ %>
+        <form action="/admin/auth/homepage/edit/vol/<%= volunteer[i].id %>" method="post">
+          <div class="title"  style="color:black">Edit Volunteer Login</div>
+          <h3>Username:</h3>
+          <input type="text" name="username" value="<%= volunteer[i].username %>">
+          <h3>Password:</h3>
+          <input type="text" name="pw" value="<%= volunteer[i].pw %>">
+          <button type="submit">Update Info</button>
+        </form>
+        <% } %>
+      </div>
+
+
+      <div class="footer"></div>
+    </div>
   </body>
 </html>

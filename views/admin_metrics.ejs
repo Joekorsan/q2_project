@@ -3,33 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="https://use.fontawesome.com/44d41c7531.js"></script>
   </head>
   <body>
-    <h1>Metrics</h1>
+    <div class='main admin-container'>
+      <!-- <img class="logo" src="../logo.png"></img> -->
+      <div class="top-nav">
+        <!-- <div class="item"><a href="/admin/auth/metrics">METRICS</a></div> -->
+        <div class="item"><a href="/admin/auth/homepage">HOME</a></div>
+        <div class="item"><a href="/admin/auth/metrics">METRICS</a></div>
+        <div></div>
+        <div class="item" style="text-align: right; margin-right: 15px"><a href="/pa/logout">LOGOUT</a></div>
+      </div>
 
-    <h3>Month(ITS NOT MONTHLY YET JUST TOTAL) Graph</h3>
-
-
-
-    <% for(let i=0;i<sumChildren.length;i++){ %>
-    Number of Children: <%= sumChildren[i].sum %>
-    <% } %><BR>
-
-    <% for(let i=0;i<countAppt.length;i++){ %>
-        Number of Visits <%= countAppt[i].count %>
+      <div class="content">
+        <h3>Metrics Month Graph</h3>
+        <% for(let i=0;i<sumChildren.length;i++){ %>
+        Number of Children: <%= sumChildren[i].sum %>
         <% } %><BR>
 
-      <% for(let i=0;i<paCheck.length;i++) { %>
-        Number of PA visits: <%= paCheck[i].count %><BR>
-          <% } %>
+        <% for(let i=0;i<countAppt.length;i++){ %>
+            Number of Visits <%= countAppt[i].count %>
+            <% } %><BR>
 
-          <% for(let i=0; i<parentCheck.length;i++){ %>
-            Number of Parent visits: <%= paCheck[i].count %><BR>
-            <% } %>
+          <% for(let i=0;i<paCheck.length;i++) { %>
+            Number of PA visits: <%= paCheck[i].count %><BR>
+              <% } %>
+
+              <% for(let i=0; i<parentCheck.length;i++){ %>
+                Number of Parent visits: <%= paCheck[i].count %><BR>
+                <% } %>
+      </div>
 
 
-<hr>
-<a href="/admin/auth/homepage">Go Back</a>
 
+      <div class="footer">
+      </div>
+    </div>
   </body>
 </html>
