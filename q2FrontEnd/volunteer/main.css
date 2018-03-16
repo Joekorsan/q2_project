@@ -233,3 +233,13 @@ button a{
   color:white;
   text-decoration: none;
 }
+#invite-pa{
+  background: #2A6AF1;
+  width:200px;
+  height:30px;
+  color:white;
+  font-size: 22px;
+  right:0;
+  outline:none;
+  text-decoration:none;
+}

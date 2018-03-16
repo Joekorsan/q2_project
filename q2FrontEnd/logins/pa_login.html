@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <!-- JS -->
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="./main.css">
     <script src="https://use.fontawesome.com/44d41c7531.js"></script>
   </head>
   <body>
     <div class='main'>
       <img class="logo" src="../logo.png"></img>
-      <div class="top-nav"style="background: none"></div>
+      <div class="top-nav"></div>
       <div class="login-container" style="background: #005F97">
         <h1 class='title'>PARENT AID LOGIN</h1><h5 class="error">ERR: <%= err %></h5>
         <form action="/pa/login" method="post">
@@ -18,7 +17,7 @@
           <input type="password" name="password" value="" placeholder="Password">
           <input id="submit" type="submit" name="submit" value="LOGIN">
         </form><br>
-        <a class="link" href="/pa/signup">Not Signed Up? Click Here</a>
+        <a class="link" href="pa_signup.html">Not Signed Up? Click Here</a>
       </div>
       <div class="footer"></div>
 

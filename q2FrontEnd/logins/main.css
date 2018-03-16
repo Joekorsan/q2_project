@@ -145,7 +145,7 @@ form input::placeholder{
 /*ADMIN */
 .top-nav{
   grid-column:span 3;
-  background:  #2A6AF1;
+  /* background:  #2A6AF1; */
   display:grid;
   grid-template-columns:repeat(4,1fr);
   height:60px;
@@ -232,4 +232,14 @@ button{
 button a{
   color:white;
   text-decoration: none;
+}
+#invite-pa{
+  background: #2A6AF1;
+  width:200px;
+  height:30px;
+  color:white;
+  font-size: 22px;
+  right:0;
+  outline:none;
+  text-decoration:none;
 }

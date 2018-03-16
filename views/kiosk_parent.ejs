@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    CHECK IN KIOSK FOR PARENTS
-    <br>
-    <form action="/kiosk/parent" method="post">
-      Name: <input type="text" name="parent_firstName" placeholder="First">
-      <input type="text" name="parent_lastName" placeholder="Last">
-      <button type="submit" >checkin</button>
-    </form>
-    <% if(err){ %>
-     <h4><%= err %></h4>
-   <% } %>
-  </body>
-</html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+<body>
+  <img class="logo" src="logo.png"></img>
+
+  <div class="main" style="background:#005F97">
+    <div class="top-nav" style="background:  none"></div>
+
+    <div class="login-container" >
+      <input class="parent-input" type="text" name="parent_firstName" placeholder="First Name">
+      <input class="parent-input" type="text" name="parent_lastName" placeholder="Last Name"><BR><BR>
+      <button class= "enter-btn" type="submit" name="button">Check-In</button><BR><BR>
+      <a class="cancel" href="home.html">Cancel</a>
+
+    </div>
+
+    <div class="footer"></div>
+  </div>
+</body>

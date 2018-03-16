@@ -3,17 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="https://use.fontawesome.com/44d41c7531.js"></script>
   </head>
   <body>
+    <div class='main'>
+      <img class="logo" src="../logo.png"></img>
+      <div class="top-nav"></div>
+      <div class="login-container" style="background: #005F97">
+        <form action="/admin" method="post">
+          <h1 class='title'>ADMIN</h1>
+          <input type="text" name="username" placeholder="username">
+          <input type="password" name="pw" placeholder="**********">
+          <input type="submit" value="LOGIN">
+        </form>
+      </div>
+    </div>
 
-    ADMIN LOGIN:
-    <form action="/admin" method="post">
-      <input type="text" name="username" placeholder="username">
-      <input type="password" name="pw" placeholder="password">
-      <button type="submit">Login</button>
-
-    </form>
-
-
+      <div class="footer"></div>
+    </div>
   </body>
 </html>

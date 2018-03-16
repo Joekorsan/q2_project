@@ -29,6 +29,8 @@ module.exports = function(app) {
 
   //get kiosk checkin
   app.get('/kiosk', kiosk.checkin);
+  app.get('/kiosk/pa', kiosk.pa);
+  app.get('/kiosk/parent', kiosk.parent );
 
 
 
