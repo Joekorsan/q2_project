@@ -25,7 +25,7 @@
           <p>
             <b>App Date: <%= schedule[i].appt_date %></b><BR>
             Parent/Case Aid Name: <u><%= schedule[i].first_name %> <%= schedule[i].last_name %></u><BR>
-              Parent(s): <%= schedule[i].parentFirst_name %> -
+              Parent(s): <%= schedule[i].parent_firstName %> <%= schedule[i].parent_lastName %> - 
                 # of Children: <%= schedule[i].number_of_children %><BR>
               Created at: <%= schedule[i].created_at %><BR>
               Updated at: <%= schedule[i].updated_at %><BR>
