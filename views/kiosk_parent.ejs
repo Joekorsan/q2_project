@@ -11,10 +11,15 @@
     <div class="top-nav" style="background:  none"></div>
 
     <div class="login-container" >
-      <input class="parent-input" type="text" name="parent_firstName" placeholder="First Name">
-      <input class="parent-input" type="text" name="parent_lastName" placeholder="Last Name"><BR><BR>
-      <input class= "enter-btn" type="submit" name="button" value="Check-In"><BR><BR>
-      <a class="cancel" href="/kiosk">Cancel</a>
+      <form action="/kiosk/parent" method="POST">
+        <input class="parent-input" type="text" name="parent_firstName" placeholder="First Name">
+        <input class="parent-input" type="text" name="parent_lastName" placeholder="Last Name"><BR><BR>
+        <input class= "enter-btn" type="submit" name="button" value="Check-In"><BR><BR>
+          <a class="cancel" href="/kiosk">Back</a>
+      </form>
+      <% if(err){ %>
+        <h4 class="error"> <%= err %></h4>
+      <%}%>
 
     </div>
 

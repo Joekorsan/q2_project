@@ -9,27 +9,27 @@
   <body>
     <div class='main admin-container'>
       <!-- <img class="logo" src="../logo.png"></img> -->
-      <div class="top-nav" style="background:none">
+      <div class="top-nav">
         <!-- <div class="item"><a href="/admin/auth/metrics">METRICS</a></div> -->
         <div class="item"><a href="/admin/auth/homepage">HOME</a></div>
         <div class="item"><a href="/admin/auth/metrics">METRICS</a></div>
       </div>
 
       <div class="content">
-        <form class="edit-form" action="/admin/auth/homepage/edit/pa/<%= pa[i].id %>" method="post">
+        <form class="edit-form" action="/admin/auth/homepage/edit/pa/<%= pa[0].id %>" method="post">
           <div class="title"  style="color:black">EDIT P.A PROFILE</div>
           <h3>P.A. Name:</h3>
-          <input class=type="text" name="first_name" value="<%= pa[i].first_name %>">
-          <input type="text" name="middle_initial" value="<%= pa[i].middle_initial %>">
-          <input type="text" name="last_name" value="<%= pa[i].last_name %>">
+          <input type="text" name="first_name" value="<%= pa[0].first_name %>">
+          <input type="text" name="middle_initial" value="<%= pa[0].middle_initial %>">
+          <input type="text" name="last_name" value="<%= pa[0].last_name %>">
           <h3>Agency Name:</h3>
-          <input type="text" name="agency_name" value="<%= pa[i].agency_name %>">
+          <input type="text" name="agency_name" value="<%= pa[0].agency_name %>">
           <h3>Phone Number:</h3>
-          <input type="text" name="phone_number" value="<%= pa[i].phone_number %>">
+          <input type="text" name="phone_number" value="<%= pa[0].phone_number %>">
           <h3>Email: </h3>
-          <input type="text" name="email" value="<%= pa[i].email %>">
+          <input type="text" name="email" value="<%= pa[0].email %>">
           <h3>Password: </h3>
-          <input type="text" name="pw" value="<%= pa[i].pw %>">
+          <input type="text" name="pw" value="<%= pa[0].pw %>">
           <button type="submit">Update Info</button>
         </form>
       </div>

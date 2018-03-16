@@ -23,15 +23,15 @@
           <% if(schedule[i].appt_date === null){ %>
             <% } else { %>
           <p>
-            App Date: <%= schedule[i].appt_date %><BR>
-            Parent/Case Aid Name: <%= schedule[i].first_name %> <%= schedule[i].last_name %><BR>
+            <b>App Date: <%= schedule[i].appt_date %></b><BR>
+            Parent/Case Aid Name: <u><%= schedule[i].first_name %> <%= schedule[i].last_name %></u><BR>
               Parent(s): <%= schedule[i].parentFirst_name %> -
                 # of Children: <%= schedule[i].number_of_children %><BR>
               Created at: <%= schedule[i].created_at %><BR>
               Updated at: <%= schedule[i].updated_at %><BR>
                 <div class="edit-button"> <a href='/admin/auth/homepage/edit/visit/<%= schedule[i].id %>'>Edit</a></div>
                   <div class="edit-button"> <a href='/admin/auth/homepage/remove/visit/<%= schedule[i].id %>'>Remove</a></div>
-          </p>
+          </p><BR>
               <% } %>
           <% } %>
       </div>
@@ -43,7 +43,7 @@
 
         <% for(let i=0; i<pa.length;i++){ %>
         <p>
-          Name: <%= pa[i].first_name %> <%= pa[i].middle_initial %> <%= pa[i].last_name %><BR>
+          <b>Name: <%= pa[i].first_name %> <%= pa[i].middle_initial %> <%= pa[i].last_name %></b><BR>
           Agency: <%= pa[i].agency_name %><BR>
           Phone Number: <%= pa[i].phone_number %><BR>
           Email: <%= pa[i].email %><BR>
@@ -55,7 +55,7 @@
           <form action="/pa/login" method="POST">
             <input name="email" type="hidden" value="<%= pa[i].email%>"></input>
             <input name="password" type="hidden" value="<%= pa[i].pw %>"></input>
-            <input class="edit-button large" type='submit' value="Go to <%= pa[i].first_name %> <%= pa[i].last_name %> page">
+            <input class="edit-button large" type='submit' value="<%= pa[i].first_name %> <%= pa[i].last_name %> page">
           </form>
           </p><BR>
           <% } %>

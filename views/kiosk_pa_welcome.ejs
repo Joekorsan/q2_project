@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
-  </head>
-  <body>
-    <h2>Welcome, <%= pa.first_name %> <%= pa.last_name %></h2>
-    <hr>
-    <br>
-    <h3>Scheduled Info</h3>
 
-    <div>
-      Visit Date: <%= schedule.appt_date %>
-      <br>
-      parent: <%= schedule.parent_firstName %> <%= schedule.parent_lastName %>
-      <br>
-      Number of Children: <%= schedule.number_of_children %>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="top-nav" style="background:none">
     </div>
+    <div class="content" style="background:#005F97; color:white">
+      <br>
+      <h1 style="font-size:60px">Welcome, <%= pa.first_name %> <%= pa.last_name %></h1>
+      <br>
+      <h2 style="font-size:50px">Scheduled Info</h2>
+      <div>
+        <h3 style="font-size:40px">Visit Date: <%= schedule.appt_date %><BR>
+           Parent: <%= schedule.parent_firstName %> <%= schedule.parent_lastName %><BR>
+           Number of Children: <%= schedule.number_of_children %></h3>
+      </div>
 
-    <script type="text/javascript">
-      setTimeout(()=>{
-        window.location.href = '/kiosk'
-      },5000)
-    </script>
-  </body>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    setTimeout(() => {
+      window.location.href = '/kiosk'
+    }, 7000)
+  </script>
+</body>
+
 </html>

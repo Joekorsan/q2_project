@@ -11,9 +11,15 @@
     <div class="top-nav" style="background:none"></div>
 
     <div class="login-container">
-      <input class="code-input" type="text" name="conf_code" value="" placeholder="# CODE"><BR><BR>
-      <input class= "enter-btn" type="submit" name="button" value='Check-In'><BR><BR><BR><BR>
-      <a class="cancel" href="/kiosk">Cancel</a>
+      <form action="/kiosk/pa" method="post">
+        <input class="code-input" type="text" name="code" value="" placeholder="# CODE"><BR><BR>
+        <input class= "enter-btn" type="submit" name="button" value='Check-In'><BR><BR><BR><BR>
+      </form>
+      <% if(err){ %>
+        <h4 class='error'> <%= err %></h4>
+      <%}%>
+
+      <a class="cancel" href="/kiosk">Back</a>
 
     </div>
 

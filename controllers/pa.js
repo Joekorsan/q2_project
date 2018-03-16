@@ -25,12 +25,12 @@ module.exports = {
           res.redirect('/pa/auth/schedule');
         })
       }else{
-        res.render("pa_login",{err: 'user not found', paObj: []})
+        res.render("pa_login",{err: 'Incorrect Username and/or Password', paObj: []})
       }
     })
     .catch((err)=>{
       console.log(err);
-      res.render("pa_login",{err: 'user not found', paObj: []})
+      res.render("pa_login",{err: 'Incorrect Username and/or Password', paObj: []})
     })
   },
   postSignup: (req,res) =>{

@@ -4,7 +4,7 @@ module.exports = {
 
   //get admin Login
   login: (req, res) => {
-    
+
       res.render('admin_login')
     },
 
@@ -35,8 +35,6 @@ module.exports = {
     if(!req.session.admin){
       req.session.admin = []
     }
-
-
     knex('parent_aids')
     .fullOuterJoin('schedule', 'schedule.parent_aids_id', 'parent_aids.id')
     .then((results)=>{
@@ -90,8 +88,8 @@ removeVisit: (req, res) => {
     knex('parent_aids')
     .where('id', req.params.id)
     .then((results)=>{
-      //console.log(results)
-      res.render('admin_edit_pa', {pa:results})
+      console.log(results)
+      res.render('admin_edit_pa', {pa: results})
     })
   },
 

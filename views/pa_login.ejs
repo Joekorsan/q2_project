@@ -12,7 +12,10 @@
       <img class="logo" src="../logo.png"></img>
       <div class="top-nav"style="background: none"></div>
       <div class="login-container" style="background: #005F97">
-        <h1 class='title'>PARENT AID LOGIN</h1><h5 class="error">ERR: <%= err %></h5>
+        <h1 class='title'>PARENT AID LOGIN</h1>
+          <% if(err !== ''){ %>
+          <h5 class="error"><%= err %></h5>
+          <%} %>
         <form action="/pa/login" method="post">
           <input type="email" name="email" value="" placeholder="Email">
           <input type="password" name="password" value="" placeholder="Password">

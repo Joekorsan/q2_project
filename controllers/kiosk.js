@@ -41,15 +41,24 @@ module.exports = {
   },
 
   parentCheckIn:(req, res)=>{
-    knex('schedule').where({
+    knex('schedule').update({parent_checkin: true})
+    .where({
       parent_firstName: req.body.parent_firstName,
       parent_lastName: req.body.parent_lastName
-    }).select('parent_firstName', 'parent_lastName')
+    })
     .then((parent)=>{
-      console.log('parent:::: ', parent);
-      if (parent[0]) {
-        res.render('kiosk_parent_welcome', {parent:parent[0]})
+      console.log('parent:::: ', parent[0]);
+      if (parent) {
+        knex("schedule")
+        .where({
+          parent_firstName: req.body.parent_firstName,
+          parent_lastName : req.body.parent_lastName
+        })
+        .then((result)=>{
+          res.render('kiosk_parent_welcome', {parent:result[0]})
+        })
       }else{
+
         res.render('kiosk_parent', {err: `The name ${req.body.parent_firstName} ${req.body.parent_lastName} was not found in our system.
         Please re-enter name or see front desk.`})
       }

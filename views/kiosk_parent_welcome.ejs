@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parent Welcome</title>
-  </head>
-  <body>
 
-    <div>
-      <h2>Welome, <%= schedule.parent_firstName %> <%= schedule.parent_lastName %></h2>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="top-nav" style="background:none">
     </div>
+    <div class="content" style="background:#005F97; color:white">
 
-    <script type="text/javascript">
-      setTimeout(()=>{
-        window.location.href = '/kiosk'
-      },5000)
-    </script>
-  </body>
+
+        <BR><BR><BR>
+      <h1 style="font-size:60px; text-align:center">Welome, <%= parent.parent_firstName %> <%= parent.parent_lastName %></h1>
+
+  </div>
+
+  <script type="text/javascript">
+    setTimeout(() => {
+      window.location.href = '/kiosk'
+    }, 5000)
+  </script>
+</body>
+
 </html>
